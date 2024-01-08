@@ -1,0 +1,6 @@
+@import './reset/reset.css';
+
+
+img{
+    user-select: none;
+}
