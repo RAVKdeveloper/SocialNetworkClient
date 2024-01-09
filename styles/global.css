@@ -4,3 +4,13 @@
 img{
     user-select: none;
 }
+
+
+:root{
+    --back-main: #ebedf0;
+    --noactive-color: #818c99;
+    --main-color: #000;
+    --color-accent: #2d81e0;
+    --color-white: #fff;
+    --back-white: #fff;
+}

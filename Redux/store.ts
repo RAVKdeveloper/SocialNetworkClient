@@ -3,12 +3,11 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { setupListeners } from '@reduxjs/toolkit/query'
 
-import test from "./Slices/Test/test";
-
+import Auth from "./Slices/Auth/Auth";
 
 export const store = configureStore({
     reducer: {
-        test
+        Auth
     },
     middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat()
 })

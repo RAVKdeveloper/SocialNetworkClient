@@ -1,0 +1,117 @@
+.root{
+    width: 360px;
+    height: 456px;
+    padding: 28px;
+    border-radius: 0 12px 12px 0;
+    background: var(--back-white);
+}
+
+.logo{
+    max-width: 48px;
+    max-height: 48px;
+}
+
+.headForm{
+    padding-bottom: 16px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.title{
+    margin-top: 16px;
+    font-size: 20px;
+    font-weight: 500;
+    color: var(--main-color);
+}
+
+.subtitle{
+    margin-top: 8px;
+    font-size: 15px;
+    color: var(--noactive-color);
+    line-height: 20px;
+    text-align: center;
+}
+
+.input{
+    width: 100%;
+    padding: 0 12px;
+    border-radius: 8px;
+    border: 1px solid rgba(128, 128, 128, 0.3);
+    height: 36px;
+    background: var(--back-main);
+    transition: border-color .3s ease;
+}
+
+.input:focus{
+    border-color: var(--color-accent);
+    transition: border-color .3s ease;
+}
+
+.input input{
+    background-color: transparent;
+}
+
+.input select{
+    display: none;
+}
+
+.checkBoxRow{
+    margin-top: 15px;
+    margin-bottom: 28px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.checkbox{
+    width: 24px;
+    height: 24px;
+    border: 1px solid rgba(128, 128, 128, 0.3);
+    border-radius: 4px;
+    cursor: pointer;
+    user-select: none;
+    position: relative;
+    overflow: hidden;
+}
+
+.checkbox.check::after{
+    content: '+';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: var(--color-accent);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-white);
+    font-size: 18px;
+}
+
+.textCheckBox{
+    font-size: 16px;
+    color: var(--noactive-color);
+}
+
+.btn{
+    width: 100%;
+    height: 36px;
+    background: var(--color-accent);
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--color-white);
+    border-radius: 6px;
+}
+
+.btn.dis{
+    opacity: 0.5;
+}
+
+
+.politikKondishenal{
+    text-align: center;
+    margin-top: 70px;
+    font-size: 11px;
+    color: #99a2ad;
+    line-height: 14px;
+}
