@@ -9,10 +9,15 @@ import { useForm, Controller } from "react-hook-form";
 import { SubmitHandler } from 'react-hook-form';
 import PhoneInput, { isValidPhoneNumber } from "react-phone-number-input";
 import "react-phone-number-input/style.css";
+import { useRouter } from 'next/navigation';
+import { useCheckPhoneMutation } from '@/Redux/Api/User/Auth/authApi';
 
 
 
 const FormRegistration: FC = () => {
+
+    const { push } = useRouter()
+    const [ reqPhone ] = useCheckPhoneMutation()
     
     const {
         register,
@@ -34,10 +39,22 @@ const FormRegistration: FC = () => {
         return dispatch(setRememberMe(true))
     }
 
+    const fetchPhoneNomber = async (nomber: string) => {
+        try{
+           await reqPhone({phone: nomber}).unwrap()
+           sessionStorage.setItem('phoneAuth', nomber)
+           push('/authRegProfile')
+           console.log('hello')
+        } catch (e: any) {
+            if(e.data.status !== 201)
+            alert(e.data.message)
+        }
+    }
+
     const submit: SubmitHandler<{ phone: string }> = data => {
         const value = data.phone.replace(/[a-zа-яё]/gi, '')
         dispatch(setPhoneNumber(value.trim()))
-        console.log(data.phone.trim())
+        fetchPhoneNomber(value)
     }
 
     return (
@@ -55,7 +72,7 @@ const FormRegistration: FC = () => {
                   name="phone"
                   control={control}
                   rules={{
-                  validate: (value) => isValidPhoneNumber(value)
+                  validate: (value: string) => isValidPhoneNumber(value)
                   }}
                  render={({ field: { onChange, value } }) => (
                <PhoneInput
