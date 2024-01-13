@@ -3,6 +3,7 @@
 import { FC, useState } from 'react'
 import s from './style.module.css'
 import { useRouter } from 'next/navigation';
+import nookies from 'nookies'
 import { useCreateUserMutation } from '@/Redux/Api/User/Auth/authApi';
 
 
@@ -31,7 +32,11 @@ const RegContactInfoPage: FC = () => {
               email: newObj.email
            }
 
-          await reqUser(obj).unwrap()
+          const res = await reqUser(obj).unwrap()
+          nookies.set(null, 'tokenAuth', JSON.stringify(res.access_token), {
+            maxAge: 30 * 24 * 60 * 60,
+            path: '/',
+           })
           push('/')
         }
         } catch (e: any) {

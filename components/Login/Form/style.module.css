@@ -1,0 +1,129 @@
+.root{
+    padding: 32px 24px;
+    background: var(--back-white);
+    border-radius: 16px;
+    width: 320px;
+}
+
+.headForm{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    padding-bottom: 20px;
+}
+
+.title{
+    font-size: 20px;
+    font-weight: 500;
+    color: var(--color-main);
+}
+
+.form{
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 24px;
+    border-bottom: 1px solid rgba(153, 152, 152, 0.1);
+}
+
+.input{
+    padding: 8px 12px;
+    background: var(--back-main);
+    border-radius: 6px;
+    border: 1px solid rgba(153, 152, 152, 0.3);
+    transition: all .3s ease;
+}
+
+.input.pass{
+    margin-top: 15px;
+}
+
+.input:focus{
+    border-color: var(--color-accent);
+    transition: all .3s ease;
+}
+
+.checkBoxRow{
+    margin-top: 12px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+
+.checkBox{
+    width: 16px;
+    height: 16px;
+    border: 1px solid rgba(153, 152, 152, 0.5);
+    border-radius: 4px;
+    cursor: pointer;
+    user-select: none;
+    position: relative;
+}
+
+.checkBox.check::after{
+    content: '+';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: var(--color-accent);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-white);
+    font-size: 16px;
+}
+
+.text{
+    font-size: 13px;
+    color: var(--noactive-color);
+}
+
+.btn{
+    margin-top: 20px;
+    background: var(--color-accent);
+    height: 36px;
+    border-radius: 8px;
+    color: var(--color-white);
+}
+
+.btn.dis{
+    opacity: 0.5;
+}
+
+.error{
+    color: red;
+    font-size: 16px;
+    padding-top: 10px;
+}
+
+.qrBlock{
+    padding-top: 20px;
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+}
+
+.column{
+    padding-top: 6px;
+    display: flex;
+    flex-direction: column;
+}
+
+.qrTitle{
+    padding-bottom: 8px;
+    font-weight: 600;
+}
+
+.qrSubtitle{
+    font-size: 13px;
+    color: var(--noactive-color);
+    padding-bottom: 8px;
+}
+
+.link{
+    font-size: 13px;
+    color: var(--color-accent);
+    cursor: pointer;
+    user-select: none;
+}
