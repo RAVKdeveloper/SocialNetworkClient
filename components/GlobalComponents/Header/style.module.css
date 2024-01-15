@@ -51,6 +51,7 @@
     display: flex;
     align-items: center;
     gap: 10px;
+    position: relative;
 }
 
 .serchIcon{
@@ -108,11 +109,19 @@
 
 
 .right{
+    height: 48px;
     display: flex;
     align-items: center;
     gap: 6px;
     cursor: pointer;
     user-select: none;
+    padding: 0 10px;
+    transition: all .3s ease;
+}
+
+.right:hover{
+    background: var(--back-main);
+    transition: all .3s ease;
 }
 
 .avatar{

@@ -40,16 +40,8 @@ const AuthSmsPage: FC = () => {
     })
      const { sex, isOpenSexModal } = useAppSelector(authSelector)
      const dispatch = useAppDispatch()
-     const [ image, setImage ] = useState<string>('')
      const { push } = useRouter()
 
-
-     const addImage = (e: React.ChangeEvent<HTMLInputElement>) => {
-        if (e.target.files && e.target.files[0]) {
-            setImage(URL.createObjectURL(e.target.files[0]));
-            sessionStorage.setItem('imgReg', JSON.stringify(URL.createObjectURL(e.target.files[0])))
-          }
-     } 
 
      const openModal = () => {
         if(isOpenSexModal) return dispatch(setOpenSexModal(false))
@@ -70,14 +62,6 @@ const AuthSmsPage: FC = () => {
                 <h3 className={s.title}>Информация о себе</h3>
                 <form onSubmit={handleSubmit(submit)} className={s.form}>
                     <div className={s.containerAvatarAndName}>
-                          <div className={s.uploadFiles}>
-                            <MdOutlineCameraAlt className={s.camera} />
-                            <input onChange={addImage} type="file" className={s.fileInput} />
-                            {
-                                image &&
-                                <img src={image} alt='icon' className={s.avatarImg  } />
-                            }
-                          </div>
                           <div className={s.nameandsurname}>
                             <input type="text" className={s.inputName} placeholder='Имя' {...register('name', { required: true, minLength: 2, maxLength: 20 })} />
                             <input type="text" placeholder='Отчество' {...register('middlename', { required: true, minLength: 3, maxLength: 20 })} />

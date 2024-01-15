@@ -6,7 +6,7 @@ interface Iinitialstate {
     phoneNumber: string
     rememberMe: boolean
     isOpenSexModal: boolean
-    sex: string
+    sex: string,
 }
 
 
@@ -14,7 +14,7 @@ const initialState: Iinitialstate = {
     phoneNumber: '+ 7',
     rememberMe: false,
     isOpenSexModal: false,
-    sex: 'Пол'
+    sex: 'Пол',
 }
 
 
@@ -34,7 +34,7 @@ export const Auth = createSlice({
         },
         setSex: (state, action: PayloadAction<string>) => {
             state.sex = action.payload
-        }
+        },
     }
 })
 

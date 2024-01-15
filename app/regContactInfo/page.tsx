@@ -13,6 +13,7 @@ const RegContactInfoPage: FC = () => {
     const [ reqUser, { isLoading } ] = useCreateUserMutation()
     const { push } = useRouter()
 
+
     const createUser = async () => {
         try{
             const infoobj = sessionStorage.getItem('myInfoReg')
@@ -26,7 +27,7 @@ const RegContactInfoPage: FC = () => {
               surname: newObj.surname,
               birthday: newObj.birthday,
               password: newObj.pass,
-              avatar: sessionStorage.getItem('imgReg') ? sessionStorage.getItem('imgReg') : '',
+              avatar: '',
               city: city ? city : '',
               sex: sessionStorage.getItem('sexUser'),
               email: newObj.email
@@ -43,6 +44,7 @@ const RegContactInfoPage: FC = () => {
            alert('Пользователь с таким email уже существует')
         }
     }
+
 
     return (
 

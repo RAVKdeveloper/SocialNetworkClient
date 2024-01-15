@@ -1,6 +1,11 @@
-import { FC } from 'react'
+import React, { FC, useCallback, useRef, useState } from 'react'
+import debonce from 'lodash.debounce'
 import s from './style.module.css'
 import Image from 'next/image'
+import SearchHeaderModal from './Modals/SearchModal/modal'
+import { useAppDispatch } from '@/Redux/hooks/hooks'
+import { setIsOpenSearchModal } from '@/Redux/Slices/Header/headerModals'
+import { setSearchValue } from '@/Redux/Slices/Header/modalsValue'
 import logo from '@/assets/img/HomePage/vk.png'
 import avatar from '@/assets/img/HomePage/avatarNotFound.png'
 import { IoSearch } from "react-icons/io5";
@@ -9,6 +14,23 @@ import { IoIosArrowDown } from "react-icons/io";
 
 
 const Header: FC = () => {
+
+    const dispatch = useAppDispatch()
+    const searchBodyRef = useRef<HTMLDivElement>(null)
+    const inputRef = useRef<HTMLInputElement>(null)
+    const [ localSearchValue, setLocalSearchValue ] = useState<string>('')
+
+    const openSearchModal = () => dispatch(setIsOpenSearchModal(true))
+
+    const addSearchValue = useCallback(
+        debonce((str: string) => dispatch(setSearchValue(str)), 400),
+        []
+    )
+
+    const OnChangeSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
+        setLocalSearchValue(e.target.value)
+        addSearchValue(e.target.value)
+    }
 
     return (
 
@@ -20,9 +42,10 @@ const Header: FC = () => {
                   <h3 className={s.logoText}>ВКОНТАКТЕ</h3>
                 </div>
                 <div className={s.leftContent}>
-                    <div className={s.searchBody}>
+                    <div ref={searchBodyRef} onClick={openSearchModal} className={s.searchBody}>
                        <IoSearch className={s.serchIcon} />
-                       <input type="text" className={s.search} placeholder='Поиск' />
+                       <input value={localSearchValue} onChange={OnChangeSearch} ref={inputRef} type="text" className={s.search} placeholder='Поиск' />
+                       <SearchHeaderModal parent={searchBodyRef} input={inputRef} />
                     </div>
                     <div className={s.bellBody}>
                         <GoBell className={s.bell} />

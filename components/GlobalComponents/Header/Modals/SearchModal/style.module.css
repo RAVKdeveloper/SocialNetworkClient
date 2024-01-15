@@ -1,0 +1,133 @@
+.root{
+    width: 344px;
+    position: absolute;
+    top: 40px;
+    left: 0;
+    background: var(--back-white);
+    box-shadow: 0 0 6px 1px rgba(0, 0, 0, 0.2);
+    padding: 0 4px;
+    border-bottom-left-radius: 6px;
+    border-bottom-right-radius: 6px;
+    z-index: 800;
+    pointer-events: none;
+    opacity: 0;
+    transition: all .3s ease;
+}
+
+.root.active{
+    pointer-events: all;
+    opacity: 1;
+    transition: all .3s ease;
+}
+
+.title{
+    padding: 15px 12px 17px;
+    font-weight: 600;
+    color: var(--color-main);
+}
+
+.peopleConteiner{
+    border-bottom: 1px solid rgba(153, 153, 153, 0.2);
+    padding-bottom: 8px;
+}
+
+.card{
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    border-radius: 6px;
+    height: 60px;
+    cursor: pointer;
+    user-select: none;
+    transition: all .3s ease;
+    padding: 0 12px;
+}
+
+.card:hover{
+    background: var(--back-main);
+    transition: all .3s ease;
+}
+
+.avatar{
+    border-radius: 50%;
+}
+
+.userInfoColumn{
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.name{
+    font-weight: 500;
+    color: var(--color-main);
+}
+
+.dopInfo{
+    font-size: 13px;
+    color: var(--noactive-color);
+}
+
+.clubContainer{
+    padding-bottom: 10px;
+}
+
+
+/* Loader */
+
+.loaderBody{
+    top: 0;
+    left: 0;
+    position: absolute;
+    width: 100%;
+    background: var(--back-white);
+    height: 100%;
+    border-bottom-left-radius: 6px;
+    border-bottom-right-radius: 6px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.loader {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    position: relative;
+    animation: rotate 1s linear infinite;
+  }
+  .loader::before {
+    content: "";
+    box-sizing: border-box;
+    position: absolute;
+    inset: 0px;
+    border-radius: 50%;
+    border: 2px solid rgba(82, 82, 82, 0.6);
+    animation: prixClipFix 2s linear infinite ;
+  }
+
+  @keyframes rotate {
+    100%   {transform: rotate(360deg)}
+  }
+
+  @keyframes prixClipFix {
+      0%   {clip-path:polygon(50% 50%,0 0,0 0,0 0,0 0,0 0)}
+      25%  {clip-path:polygon(50% 50%,0 0,100% 0,100% 0,100% 0,100% 0)}
+      50%  {clip-path:polygon(50% 50%,0 0,100% 0,100% 100%,100% 100%,100% 100%)}
+      75%  {clip-path:polygon(50% 50%,0 0,100% 0,100% 100%,0 100%,0 100%)}
+      100% {clip-path:polygon(50% 50%,0 0,100% 0,100% 100%,0 100%,0 0)}
+  }
+
+
+  /* Empty */
+
+.empty{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    color: var(--color-accent);
+    font-size: 16px;
+    font-weight: 500;
+}
