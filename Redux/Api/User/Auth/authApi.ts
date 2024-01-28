@@ -26,6 +26,11 @@ interface ResUser {
   user: UserType
 }
 
+interface ReqUploadAvatar {
+  img: File | string
+  token: string
+}
+
 export const auhtApi = createApi({
     reducerPath: 'authApi',
     baseQuery: fetchBaseQuery({ baseUrl: 'http://localhost:5000/user' }),
@@ -67,11 +72,41 @@ export const auhtApi = createApi({
             }
           }
         }
+       }),
+       uploadAvatar: builder.mutation<string, ReqUploadAvatar>({
+          query: obj => {
+            const body = new FormData()
+            body.append('file', obj.img);
+
+            return {
+             url: '/avatar',
+             method: 'POST',
+             body,
+             headers: {
+              'Authorization': obj.token
+             }
+          }}
+       }),
+       deleteAvatar: builder.mutation<string, ReqUploadAvatar>({
+         query: obj => ({
+              url: `/avatar/${obj.img}`,
+              method: 'DELETE',
+              headers: {
+              'Authorization': obj.token
+              }
+            }) 
        })
     })
 })
 
 
-export const { useCheckPhoneMutation, useCreateUserMutation, useLoginUserMutation, useLazyAuthMeQuery } = auhtApi
+export const { 
+  useCheckPhoneMutation, 
+  useCreateUserMutation, 
+  useLoginUserMutation, 
+  useLazyAuthMeQuery, 
+  useUploadAvatarMutation,
+  useDeleteAvatarMutation, 
+  } = auhtApi
 
 export default auhtApi.reducer

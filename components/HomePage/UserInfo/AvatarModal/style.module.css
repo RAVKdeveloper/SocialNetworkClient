@@ -1,0 +1,101 @@
+.root{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+
+    pointer-events: none;
+    opacity: 0;
+    transition: all .3s ease;
+}
+
+.root.active{
+    pointer-events: all;
+    opacity: 1;
+    transition: all .3s ease;
+}
+
+.modal{
+    background: var(--back-white);
+    border-radius: 10px;
+    width: 638px;
+}
+
+.titleRow{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 19px 25px;
+    border-bottom: 1px solid rgba(168, 168, 168, 0.5);
+}
+
+.title{
+    font-weight: 500;
+    color: var(--color-main);
+}
+
+.close{
+    width: 20px;
+    height: 20px;
+    opacity: 0.5;
+    cursor: pointer;
+}
+
+.avatarEditor{
+    padding: 20px 25px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    border-bottom: 1px solid rgba(168, 168, 168, 0.5);
+}
+
+.text{
+    text-align: center;
+    padding: 12px 0 15px;
+    color: var(--color-main);
+    font-weight: 500;
+    line-height: 150%;
+}
+
+.btn{
+    font-size: 12.5px;
+    background: var(--color-accent);
+    color: var(--color-white); 
+    padding: 7px 16px 8px;
+    border-radius: 6px;
+    user-select: none;
+    transition: all .3s ease;
+}
+
+.btn.btnUpload{
+    margin-bottom: 20px;
+}
+
+.btn.btnUpload.dis{
+    opacity: 0.5;
+}
+
+.btn:hover{
+    opacity: 0.8;
+    transition: all .3s ease;
+}
+
+.hiddenInput{
+    display: none;
+}
+
+.footer{
+    padding: 14px 25px;
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 120%;
+    color: var(--color-main);
+}

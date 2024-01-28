@@ -2,13 +2,15 @@
 
 import { FC, useEffect } from 'react'
 import s from './style.module.css'
+import Image from 'next/image'
 import { useAppDispatch, useAppSelector } from '@/Redux/hooks/hooks'
 import { headerModalsSelector, setIsOpenSearchModal } from '@/Redux/Slices/Header/headerModals'
 import { useLazyGetSearchQuery } from '@/Redux/Api/Headers/allHeadersApi'
-import Image from 'next/image'
-import avatarImg from '@/assets/img/HomePage/avatarNotFound.png'
 import { modalsValueSelector } from '@/Redux/Slices/Header/modalsValue'
 import { userSelect } from '@/Redux/Slices/User/userGlobal'
+import { SERVERAPI } from '@/assets/config';
+
+import avatarImg from '@/assets/img/HomePage/avatarNotFound.png'
 
 
 interface Props {
@@ -62,7 +64,7 @@ const SearchHeaderModal: FC<Props> = ({ parent, input }) => {
                                     avatar === 'none' || avatar === '' ?
                                     <Image src={avatarImg} alt="avatar" width={40} height={40} className={s.avatar} />
                                     :
-                                    <img src={avatar} alt='avatar' width={40} height={40} className={s.avatar} />
+                                    <img src={`${SERVERAPI}${avatar}`} alt='avatar' width={40} height={40} className={s.avatar} />
                                 }
                             <div className={s.userInfoColumn}>
                                <p className={s.name}>{name} {surname}</p>

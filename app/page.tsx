@@ -1,14 +1,17 @@
 'use client'
 
 import s from './style.module.css'
+import nookies from 'nookies'
 import { useEffect } from "react"
 import { useRouter } from "next/navigation"
 import { useLazyAuthMeQuery } from "@/Redux/Api/User/Auth/authApi"
-import nookies from 'nookies'
 import { setUser, setToken } from "@/Redux/Slices/User/userGlobal"
 import { useAppDispatch } from "@/Redux/hooks/hooks"
 
 import Header from "@/components/GlobalComponents/Header/header"
+import SideBar from '@/components/GlobalComponents/Sidebar/SideBar'
+import UserInfoHomePage from '@/components/HomePage/UserInfo/userInfo'
+import CreateContentBannerHome from '@/components/HomePage/CreateContetnBanner/createContent'
 
 export default function Home() {
 
@@ -38,7 +41,15 @@ export default function Home() {
     <>
     <Header/>
     <main className={s.root}>
-      <h1>Hello</h1>
+       <div className={s.container}>
+          <SideBar/>
+          <div className={s.content}>
+            <UserInfoHomePage/>
+            <div className={s.row}>
+               <CreateContentBannerHome />
+            </div>
+          </div>
+       </div>
     </main>
     </>
   )

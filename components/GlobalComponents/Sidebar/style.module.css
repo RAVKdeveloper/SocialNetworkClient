@@ -1,0 +1,32 @@
+.root{
+    padding-top: 12px;
+
+    display: flex;
+    flex-direction: column;   
+}
+
+.card{
+    width: 164px;
+    height: 30px;
+    padding: 0 6px;
+
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--color-main);
+    font-size: 13px;
+    font-weight: 500;
+    border-radius: 4px;
+    transition: all .3s ease;
+}
+
+.card:hover{
+    background: #aeb7c21f;
+    transition: all .3s ease;
+}
+
+.icon{
+    color: var(--color-accent);
+    width: 18px;
+    height: 18px;
+}

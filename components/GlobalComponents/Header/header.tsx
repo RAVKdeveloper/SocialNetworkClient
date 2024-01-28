@@ -3,9 +3,14 @@ import debonce from 'lodash.debounce'
 import s from './style.module.css'
 import Image from 'next/image'
 import SearchHeaderModal from './Modals/SearchModal/modal'
-import { useAppDispatch } from '@/Redux/hooks/hooks'
-import { setIsOpenSearchModal } from '@/Redux/Slices/Header/headerModals'
+import UserInfoModalHeader from './Modals/UserInfoModal/modal'
+
+import { useAppDispatch, useAppSelector } from '@/Redux/hooks/hooks'
+import { headerModalsSelector, setIsOpenSearchModal, setIsOpenUserInfoModal } from '@/Redux/Slices/Header/headerModals'
 import { setSearchValue } from '@/Redux/Slices/Header/modalsValue'
+import { userSelect } from '@/Redux/Slices/User/userGlobal'
+import { SERVERAPI } from '@/assets/config'
+
 import logo from '@/assets/img/HomePage/vk.png'
 import avatar from '@/assets/img/HomePage/avatarNotFound.png'
 import { IoSearch } from "react-icons/io5";
@@ -15,12 +20,18 @@ import { IoIosArrowDown } from "react-icons/io";
 
 const Header: FC = () => {
 
+    const { isOpenUserInfo } = useAppSelector(headerModalsSelector)
+    const { user } = useAppSelector(userSelect)
     const dispatch = useAppDispatch()
     const searchBodyRef = useRef<HTMLDivElement>(null)
     const inputRef = useRef<HTMLInputElement>(null)
     const [ localSearchValue, setLocalSearchValue ] = useState<string>('')
 
     const openSearchModal = () => dispatch(setIsOpenSearchModal(true))
+    const openUserInfoModal = () => {
+       if(isOpenUserInfo) return dispatch(setIsOpenUserInfoModal(false))
+       return dispatch(setIsOpenUserInfoModal(true))
+    }
 
     const addSearchValue = useCallback(
         debonce((str: string) => dispatch(setSearchValue(str)), 400),
@@ -31,6 +42,8 @@ const Header: FC = () => {
         setLocalSearchValue(e.target.value)
         addSearchValue(e.target.value)
     }
+
+    const isAvatar = user && user.avatar && user.avatar !== 'none' ? `${SERVERAPI}${user.avatar}` : avatar 
 
     return (
 
@@ -53,9 +66,10 @@ const Header: FC = () => {
                     </div>
                 </div>
             </section>
-            <section className={s.right}>
-                <Image src={avatar} alt="avatar" className={s.avatar} width={32} height={32} />
+            <section onClick={openUserInfoModal} className={isOpenUserInfo ? `${s.right} ${s.open}` : s.right}>
+                <img src={isAvatar.toString()} alt="avatar" className={s.avatar} width={32} height={32} />
                 <IoIosArrowDown className={s.arrow} />   
+                <UserInfoModalHeader/>
             </section>
             </div>
         </header>

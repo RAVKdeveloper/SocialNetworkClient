@@ -1,0 +1,100 @@
+.root{
+    position: absolute;
+    top: 100%;
+    right: 0;
+    width: 301px;
+    background: var(--back-white);
+    box-shadow: 0 20px 40px 0 rgba(0,0,0,.3);
+    padding-left: 12px;
+    padding-right: 12px;
+    padding-top: 12px;
+    padding-bottom: 8px;
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+
+    pointer-events: none;
+    opacity: 0;
+    transition: all .3s ease;
+}
+
+.root.active{
+    pointer-events: all;
+    opacity: 1;
+    transition: all .3s ease;
+}
+
+.userInfo{
+    padding: 10px 10px 10px 16px;
+    background: var(--back-main);
+    border-radius: 6px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.contentInfo{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.avatar{
+    max-width: 40px;
+    max-height: 40px;
+    min-width: 40px;
+    min-height: 40px;
+    border-radius: 50%;
+}
+
+.column{
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+}
+
+.name{
+    font-size: 13px;
+}
+
+.phone{
+    font-size: 13px;
+    color: var(--noactive-color);
+}
+
+.arrow{
+    opacity: 0.4;
+}
+
+.linksColumn{
+    display: flex;
+    flex-direction: column;
+    padding-top: 6px;
+    padding-bottom: 8px;
+}
+
+.link{
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    height: 36px;
+    color: var(--color-main);
+    font-weight: 500;
+    transition: all .3s ease;
+}
+
+.link .icons{
+    width: 20px;
+    height: 20px;
+    color: var(--color-accent);
+}
+
+.link span{
+    font-size: 13px;
+}
+
+.link:hover{
+    background: var(--back-main);
+    border-radius: 4px;
+    transition: all .3s ease;
+}

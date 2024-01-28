@@ -117,6 +117,11 @@
     user-select: none;
     padding: 0 10px;
     transition: all .3s ease;
+    position: relative;
+}
+
+.right.open{
+    background: var(--back-main);
 }
 
 .right:hover{

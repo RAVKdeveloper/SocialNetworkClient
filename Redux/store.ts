@@ -9,6 +9,8 @@ import Auth from "./Slices/Auth/Auth";
 import userGlobal from "./Slices/User/userGlobal";
 import headerModals from "./Slices/Header/headerModals";
 import modalsValue from "./Slices/Header/modalsValue";
+import homeModals from "./Slices/HomeModals/homeModals";
+import createContentAll from "./Slices/createContent/createContentAll/createContentAll";
 
 export const store = configureStore({
     reducer: {
@@ -18,7 +20,9 @@ export const store = configureStore({
         userGlobal,
         headerModals,
         modalsValue,
-    },
+        homeModals,
+        createContentAll,
+        },
     middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(
         auhtApi.middleware,
         allHeadersApi.middleware,

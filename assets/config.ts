@@ -1,0 +1,1 @@
+export const SERVERAPI = 'http://localhost:5000/'

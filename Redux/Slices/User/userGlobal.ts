@@ -4,13 +4,13 @@ import { UserType } from "@/Redux/Api/User/Auth/authApi";
 
 
 interface Iinitialstate {
-    user: UserType | {}
+    user: UserType | null
     token: string
 }
 
 
 const initialState: Iinitialstate = {
-    user: {},
+    user: null,
     token: ''
 }
 
