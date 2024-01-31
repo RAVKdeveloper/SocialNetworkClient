@@ -5,6 +5,7 @@ import { setupListeners } from '@reduxjs/toolkit/query'
 
 import { auhtApi } from "./Api/User/Auth/authApi";
 import { allHeadersApi } from "./Api/Headers/allHeadersApi";
+import { galeryApi } from "./Api/User/Galery/galeryApi";
 import Auth from "./Slices/Auth/Auth";
 import userGlobal from "./Slices/User/userGlobal";
 import headerModals from "./Slices/Header/headerModals";
@@ -16,6 +17,7 @@ export const store = configureStore({
     reducer: {
         [auhtApi.reducerPath]: auhtApi.reducer,
         [allHeadersApi.reducerPath]: allHeadersApi.reducer,
+        [galeryApi.reducerPath]: galeryApi.reducer,
         Auth,
         userGlobal,
         headerModals,
@@ -26,6 +28,7 @@ export const store = configureStore({
     middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(
         auhtApi.middleware,
         allHeadersApi.middleware,
+        galeryApi.middleware,
     )
 })
 

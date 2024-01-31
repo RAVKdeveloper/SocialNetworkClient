@@ -1,0 +1,72 @@
+.root{
+    width: 310px;
+}
+
+.avtorRow{
+    padding: 13px 20px 10px 15px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    border-bottom: 1px solid rgba(165, 165, 165, 0.4)
+}
+
+.avatar{
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.avatarInfo{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.name{
+    font-size: 13px;
+    color: #2a5885;
+    font-weight: 600;
+    cursor: pointer;
+    user-select: none;
+}
+
+.name:hover{
+    text-decoration: underline;
+}
+
+.createdDate{
+    font-size: 13px;
+    color: var(--noactive-color);
+    font-weight: 500;
+}
+
+.likesRow{
+    padding: 17px 15px 15px 15px;
+    border-bottom: 1px solid rgba(165, 165, 165, 0.4)
+}
+
+.likeEmpty{
+    opacity: 0.7;
+    cursor: pointer;
+    transition: opacity .1s ease;
+}
+
+.likeEmpty:hover{
+    opacity: 1;
+    transition: opacity .1s ease;
+}
+
+.likeFull{
+    cursor: pointer;
+}
+
+.countLikeRow{
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.count{
+    color: #e64646;
+}

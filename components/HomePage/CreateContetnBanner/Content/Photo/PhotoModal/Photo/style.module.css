@@ -1,0 +1,41 @@
+.root{
+    width: 410px;
+}
+
+.image{
+    max-width: 410px;
+    max-height: 410px;
+    min-width: 410px;
+    min-height: 410px;
+    border-top-left-radius: 16px;
+}
+
+.actionsRow{
+    height: 49px;
+    padding: 17px 23px 14px;
+    background: black;
+    border-bottom-left-radius: 16px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.info{
+    color: #cccccc;
+    font-size: 13px;
+}
+
+.delete{
+    opacity: 0.6;
+    color: #cccccc;
+    font-size: 13px;
+    user-select: none;
+    cursor: pointer;
+    transition: opacity .2s ease;
+}
+
+.delete:hover{
+    opacity: 1;
+    transition: opacity .2s ease;
+}

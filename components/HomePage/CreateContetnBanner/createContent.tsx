@@ -1,17 +1,25 @@
 import { FC } from 'react'
 import s from './style.module.css'
 import TabsCreateContent from './Tabs/tabs'
+import UserPhotoGaleryPrewiev from './Content/Photo/photoContent'
+
+import { useAppSelector } from '@/Redux/hooks/hooks'
+import { createContentAllSelector } from '@/Redux/Slices/createContent/createContentAll/createContentAll'
 
 
 const CreateContentBannerHome: FC = () => {
 
+    const { activeTab } = useAppSelector(createContentAllSelector)
+
     return (
 
-        <>
          <section className={s.root}>
-            <TabsCreateContent />
+             <TabsCreateContent />
+            {
+                activeTab === 1 &&
+                 <UserPhotoGaleryPrewiev />
+            }
          </section>
-        </>
     )
 }
 

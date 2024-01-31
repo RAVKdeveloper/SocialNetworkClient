@@ -1,0 +1,126 @@
+.root{
+    height: 279.2px;
+    overflow-y: scroll;
+    border-bottom: 1px solid rgba(165, 165, 165, 0.4);
+}
+
+.root::-webkit-scrollbar{
+    width: 0;
+}
+
+
+.comment{
+    width: 100%;
+    min-height: 87.3px;
+    padding: 8px 20px 10px 15px;
+    position: relative;
+}
+
+.avatarInfo{
+    display: flex;
+    align-items: flex-start;
+}
+
+.avatar{
+    min-height: 40px;
+    min-width: 40px;
+    max-height: 40px;
+    max-width: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.avatarInfo{
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+}
+
+.column{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.name{
+    color: #2a5885;
+    font-weight: 600;
+    font-size: 13px;
+    -webkit-font-smoothing: subpixel-antialiased;
+    -moz-osx-font-smoothing: auto;
+    user-select: none;
+    cursor: pointer;
+}
+
+.name:hover{
+    text-decoration: underline;
+}
+
+.text{
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--color-main);
+}
+
+.time{
+    padding-top: 3px;
+    color: var(--noactive-color);
+    font-size: 12.5px;
+}
+
+.actionsBody{
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    pointer-events: none;
+    opacity: 0;
+    transition: all .3s ease;
+}
+
+.comment:hover .actionsBody{
+    opacity: 1;
+    pointer-events: all;
+    transition: all .3s ease;
+}
+
+.icon{
+    color: var(--noactive-color);
+    opacity: 0.7;
+    width: 17px;
+    height: 17px;
+    cursor: pointer;
+    transition: opacity .1s ease;
+}
+
+.icon:hover{
+    opacity: 1;
+    transition: opacity .1s ease;
+}
+
+/*  If empty  */
+
+.empty{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    padding: 0 30px;
+    padding-top: 93.5px;
+}
+
+.emtyIcon{
+    color: var(--noactive-color);
+    width: 50px;
+    height: 50px;
+}
+
+.emptyText{
+    color: var(--noactive-color);
+    font-size: 13px;
+    text-align: center;
+    line-height: 140%;
+}
+
