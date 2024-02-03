@@ -6,6 +6,7 @@ import { FaRegUserCircle } from "react-icons/fa";
 import { LiaUserFriendsSolid } from "react-icons/lia";
 import { HiOutlineNewspaper } from "react-icons/hi2";
 import { BsChat } from "react-icons/bs";
+import { MdOutlineSlowMotionVideo } from "react-icons/md";
 
 
 
@@ -29,6 +30,10 @@ const SideBar: FC = () => {
             <Link href={'/'} className={s.card}>
                <LiaUserFriendsSolid className={s.icon} />
                Друзья
+            </Link>
+            <Link href={'/clips/upload'} className={s.card}>
+               <MdOutlineSlowMotionVideo className={s.icon} />
+               Клипы
             </Link>
         </aside>
     )

@@ -21,7 +21,10 @@ const TextFielsCommentsPhoto: FC = () => {
 
     const closeModal = () => setIsTexting(false)
 
-    const changeTextarea = (e: React.ChangeEvent<HTMLTextAreaElement>) => setValue(e.target.value)
+    const changeTextarea = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
+        if(value.length <= 120) setValue(e.target.value)
+        else alert('Превышен размер комментария')
+    }
 
     const createComment = async () => {
         if(token && photoId) {

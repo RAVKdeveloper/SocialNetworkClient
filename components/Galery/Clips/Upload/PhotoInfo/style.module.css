@@ -1,0 +1,46 @@
+.root{
+    border-radius: 6px;
+    width: 244.4px;
+    border: 1px solid rgba(173, 173, 173, 0.2);
+}
+
+.video{
+    border-radius: 6px;
+    /* height: 444.4px; */
+    max-width: 244px;
+    min-width: 224px;
+    max-height: 444.4px;
+}
+
+.content{
+    padding: 15px 16px 17px;
+}
+
+.nameColumn{
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.titleColumn{
+    color: var(--noactive-color);
+}
+
+.nameFile{
+    font-size: 15px;
+    line-height: 18px;
+}
+
+.linkColumn{
+    margin-top: 26px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.linkClip{
+    max-width: 212px;
+    color: var(--color-accent);
+    display: flex;
+    gap: 10px;
+}

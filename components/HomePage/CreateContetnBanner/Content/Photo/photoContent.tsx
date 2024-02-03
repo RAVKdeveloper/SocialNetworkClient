@@ -31,7 +31,7 @@ const UserPhotoGaleryPrewiev: FC = () => {
          dispath(setIsOpenPhotoModal(true))
          dispath(setPhotoId(id))
     }
-  
+
     return (
 
         <section className={s.root}>

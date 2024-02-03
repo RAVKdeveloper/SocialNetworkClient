@@ -1,0 +1,123 @@
+.description{
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.titleField{
+    color: var(--noactive-color);
+}
+
+.textFieldDesc{
+    padding: 8px 12px;
+    width: 601px;
+    height: 80px;
+    resize: none;
+    border-radius: 6px;
+    border: 1px solid rgba(173, 173, 173, 0.2);
+}
+
+.textFieldDesc::-webkit-scrollbar{
+    width: 0;
+}
+
+.preview{
+    margin-top: 25px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.textFieldBody{
+    position: relative;
+}
+
+.inputPreview{
+    padding-left: 158px;
+    width: 520px;
+    height: 32px;
+    border-radius: 6px;
+    border: 1px solid rgba(173, 173, 173, 0.2);
+}
+
+.textPreview{
+    position: absolute;
+    left: 17px;
+    top: 9px;
+    color: var(--noactive-color);
+}
+
+.settings{
+    margin-top: 30px;
+}
+
+.isCommentsRow{
+    padding-top: 16px;
+
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+}
+
+.checkBox{
+    margin-top: 2px;
+    width: 16px;
+    height: 16px;
+    border-radius: 3px;
+    border: 1px solid rgba(84, 84, 84, 0.3);
+    cursor: pointer;
+    position: relative;
+}
+
+.checkBox.check::after{
+    content: '+';
+    position: absolute;
+    background: var(--color-accent);
+    width: 100%;
+    height: 100%;
+    color: var(--color-white);
+    border-radius: 3px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.columnText{
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.checkBoxTitle{
+    font-size: 15px;
+    color: var(--color-main);
+    font-weight: 500;
+}
+
+.checkBoxSubTitle{
+    font-size: 13px;
+    color: var(--noactive-color);
+}
+
+.visibleClip{
+    margin-top: 35px;
+    position: relative;
+}
+
+.visibleText{
+    font-size: 15px;
+    color: var(--color-main);
+    font-weight: 500;
+}
+
+.visibleText span{
+    padding-left: 6px;
+    color: var(--color-accent);
+    cursor: pointer;
+    user-select: none;
+}
+
+.visibleText span:hover {
+    text-decoration: underline;
+}

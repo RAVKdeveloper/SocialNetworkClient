@@ -12,6 +12,7 @@ import headerModals from "./Slices/Header/headerModals";
 import modalsValue from "./Slices/Header/modalsValue";
 import homeModals from "./Slices/HomeModals/homeModals";
 import createContentAll from "./Slices/createContent/createContentAll/createContentAll";
+import clipUploadSlice from "./Slices/createContent/createContentAll/clipUploadSlice";
 
 export const store = configureStore({
     reducer: {
@@ -24,6 +25,7 @@ export const store = configureStore({
         modalsValue,
         homeModals,
         createContentAll,
+        clipUploadSlice,
         },
     middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(
         auhtApi.middleware,

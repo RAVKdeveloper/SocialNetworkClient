@@ -6,13 +6,15 @@ interface IinitialState {
     activeTab: number
     isOpenPhotoModal: boolean
     photoId: string
+    isOpenClipModal: boolean
 }
 
 
 const initialState: IinitialState = {
     activeTab: 1,
     isOpenPhotoModal: false,
-    photoId: ''
+    photoId: '',
+    isOpenClipModal: false,
 }
 
 
@@ -28,6 +30,9 @@ export const createContentAll = createSlice({
         },
         setPhotoId: (state, action: PayloadAction<string>) => {
             state.photoId = action.payload
+        },
+        setIsOpenClipModal: (state, action: PayloadAction<boolean>) => {
+            state.isOpenClipModal = action.payload
         }
     }
 }) 
@@ -35,6 +40,6 @@ export const createContentAll = createSlice({
 
 export const createContentAllSelector = (state: RootState) => state.createContentAll
 
-export const { setActiveTab, setIsOpenPhotoModal, setPhotoId } = createContentAll.actions
+export const { setActiveTab, setIsOpenPhotoModal, setPhotoId, setIsOpenClipModal } = createContentAll.actions
 
 export default createContentAll.reducer

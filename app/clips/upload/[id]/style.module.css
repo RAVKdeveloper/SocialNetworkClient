@@ -1,0 +1,16 @@
+.root{
+    background: var(--back-main);
+    width: 100%;
+    min-height: 100vh;
+    padding-bottom: 50px;
+}
+
+.container{
+    max-width: 1136px;
+    padding: 0 15px;
+    margin: 0 auto;
+
+    display: flex;
+    align-items: flex-start;
+}
+

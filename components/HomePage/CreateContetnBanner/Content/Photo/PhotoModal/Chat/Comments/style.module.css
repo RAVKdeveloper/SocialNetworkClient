@@ -60,6 +60,7 @@
     font-size: 13px;
     font-weight: 500;
     color: var(--color-main);
+    word-break: break-word;
 }
 
 .time{
