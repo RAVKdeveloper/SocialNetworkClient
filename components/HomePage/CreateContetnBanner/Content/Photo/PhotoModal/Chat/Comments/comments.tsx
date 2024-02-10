@@ -19,7 +19,7 @@ const CommentsPhotoGalery: FC = () => {
 
     const { token, user } = useAppSelector(userSelect)
     const { photoId } = useAppSelector(createContentAllSelector)
-    const  { data: comments } = useGetCommentsQuery({ token, id: Number(photoId) }) 
+    const  { data: comments } = useGetCommentsQuery({ token, id: +photoId }, { skip: photoId ? false : true }) 
     const [ remove ] = useDeleteCommentMutation()
 
     const deleteComment = async (id: number) => {

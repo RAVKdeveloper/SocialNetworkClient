@@ -1,4 +1,4 @@
-import { FC, useEffect, useState } from 'react'
+import { FC } from 'react'
 import s from './style.module.css'
 import Image from 'next/image'
 import Link from 'next/link'
@@ -10,6 +10,7 @@ import { userSelect } from '@/Redux/Slices/User/userGlobal'
 import { useGetOnePhotoQuery } from '@/Redux/Api/User/Galery/galeryApi'
 import { createContentAllSelector } from '@/Redux/Slices/createContent/createContentAll/createContentAll'
 import { useGetLikeQuery, useDeleteLikeMutation, useAddLikeMutation } from '@/Redux/Api/User/Galery/LikesPhoto'
+import { useTime } from '@/utils/useTime'
 import { SERVERAPI } from '@/assets/config'
 
 import likeEmpty from '@/assets/img/HomePage/likes/likeEmpty.svg'
@@ -20,34 +21,12 @@ const ChatPhotoGalery: FC = () => {
 
     const { token, user } = useAppSelector(userSelect)
     const { photoId } = useAppSelector(createContentAllSelector)
-    const { data } = useGetOnePhotoQuery({ token, id: photoId ? photoId : '1' })
-    const [ time, setTime ] = useState<number | null>(null)
-    const [ textTime, setTextTime ] = useState<string>('')
+    const { data } = useGetOnePhotoQuery({ token, id: photoId }, { skip: photoId ? false : true })
 
-    const { data: isLike } = useGetLikeQuery({ token, photoId })
+    const { data: isLike } = useGetLikeQuery({ token, photoId }, { skip: photoId ? false : true })
     const [ createLike ] = useAddLikeMutation()
     const [ deleteLike ] = useDeleteLikeMutation()
-
-    const getPhotoTimeMinuts = data && (new Date().getTime() - Date.parse(data.createAt)) / 60000
-
-    const finishTime = () => {
-        if(getPhotoTimeMinuts) {
-            if(getPhotoTimeMinuts >= 60 && getPhotoTimeMinuts < 1440) {
-                const newTime = Math.floor(getPhotoTimeMinuts / 60)
-                setTime(newTime)
-                setTextTime('часов')
-            }
-            if(getPhotoTimeMinuts < 60) {
-               setTime(Math.floor(getPhotoTimeMinuts))
-               setTextTime('минут')
-            }
-            if(getPhotoTimeMinuts >= 1440) {
-                const newTime = Math.floor(getPhotoTimeMinuts / 1440)
-                setTime(newTime)
-                setTextTime('дней')
-            }
-        }
-    }
+    const { time, textTime } = useTime(data?.updateAt, { skip: data ? false : true })
 
     const addLike = async () => {
         console.log(photoId)
@@ -65,10 +44,6 @@ const ChatPhotoGalery: FC = () => {
             alert('Произошла ошибка')
         }
     }
-
-    useEffect(() => {
-       finishTime()
-    }, [data])
 
     const hrefuser = user?.id === data?.user.id ? '/' : `user/${data?.user.id}`
 

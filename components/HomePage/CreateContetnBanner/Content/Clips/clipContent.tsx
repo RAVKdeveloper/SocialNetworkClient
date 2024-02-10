@@ -1,12 +1,18 @@
 import { FC } from 'react'
 import s from './style.module.css'
-import UploadClipsModal from './UploadModal/modal'
+import dynamic from 'next/dynamic'
+
+const UploadClipsModal = dynamic(() => import('./UploadModal/modal'))
+const ClipModal = dynamic(() => import('./ClipModal/modal'))
+import SkeletonClips from './Skeleton/skeletom'
 
 import { setIsOpenClipModal } from '@/Redux/Slices/createContent/createContentAll/createContentAll'
 import { useAppDispatch, useAppSelector } from '@/Redux/hooks/hooks'
 import { useGetClipsPreviewQuery } from '@/Redux/Api/User/Galery/Clips/clipsUpload'
 import { userSelect } from '@/Redux/Slices/User/userGlobal'
 import { SERVERAPI } from '@/assets/config'
+import { setClipId } from '@/Redux/Slices/createContent/createContentAll/clipUploadSlice'
+import { setIsOpenOneClipModal } from '@/Redux/Slices/createContent/createContentAll/createContentAll'
 
 import { MdRemoveRedEye } from "react-icons/md";
 import { FaLock } from "react-icons/fa6";
@@ -20,16 +26,19 @@ const ClipsContentHomePage: FC = () => {
 
     const openModal = () => dispatch(setIsOpenClipModal(true)) 
 
-    console.log(data)
+    const changeOpenClip = (id: number) => {
+         dispatch(setClipId(id))
+         dispatch(setIsOpenOneClipModal(true))
+    }
 
     return (
 
         <section className={s.root}>
             <div className={s.clipsRow}>
                 {
-                    data && data.length > 0 ?
+                    data ?
                      data.map(({ id, views, video, preview, visible }) => (
-                       <article key={id} className={s.card}>
+                       <article onClick={() => changeOpenClip(id)} key={id} className={s.card}>
                           <video 
                           src={`${SERVERAPI}${video}`} 
                           className={s.video} 
@@ -43,13 +52,16 @@ const ClipsContentHomePage: FC = () => {
                        </article>
                      ))
                      :
-                     null
-                }
+                     <SkeletonClips />
+                    }
             </div>
-            <div className={s.btnRow}>
-                <button onClick={openModal} className={`${s.uploadBtn} ${s.big}`}>Опубликовать клип</button>
-                <button className={`${s.uploadBtn} ${s.big}`}>Показать всё</button>
-            </div>
+            {
+                data?.length !== 0 &&
+                   <div className={s.btnRow}>
+                     <button onClick={openModal} className={`${s.uploadBtn} ${s.big}`}>Опубликовать клип</button>
+                     <button className={`${s.uploadBtn} ${s.big}`}>Показать всё</button>
+                   </div>
+            }
             { 
               data?.length === 0 &&
                <div className={s.empty}>
@@ -58,6 +70,7 @@ const ClipsContentHomePage: FC = () => {
                </div>
             }
             <UploadClipsModal />
+            <ClipModal />
         </section>
     )
 } 

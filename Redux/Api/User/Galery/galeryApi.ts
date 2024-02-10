@@ -38,7 +38,7 @@ interface ReqOnePhoto {
 
 export const galeryApi = createApi({
     reducerPath: 'galeryApi',
-    tagTypes: ['Photo', 'Like', 'Comment', 'Clip'],
+    tagTypes: ['Photo', 'Like', 'Comment', 'Clip', 'ClipLike', 'ClipComments'],
     baseQuery: fetchBaseQuery({ baseUrl: SERVERAPI }),
     endpoints: builder => ({
         postPhoto: builder.mutation<ResPhotos, ReqPostPhoto>({

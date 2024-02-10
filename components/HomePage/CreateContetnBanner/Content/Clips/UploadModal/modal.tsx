@@ -29,6 +29,7 @@ const UploadClipsModal: FC = () => {
            
            const result = await create({ token, file }).unwrap()
            push(`clips/upload/${result.id}`)
+           dispatch(setIsOpenClipModal(false))
         } catch {
             alert('Произошла ошибка')
         }

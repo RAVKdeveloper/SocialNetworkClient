@@ -1,0 +1,41 @@
+.root{
+    height: 52px;
+    padding: 0 20px;
+
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.avatar{
+    border-radius: 50%;
+    width: 28px;
+    height: 28px;
+    border: 1px solid rgba(165, 165, 165, 0.4);
+}
+
+.content{
+    width: 502px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.text{
+    color: var(--noactive-color);
+    font-weight: 500;
+    font-size: 13px;
+}
+
+.iconRow{
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.icon{
+    color: var(--noactive-color);
+    width: 22px;
+    height: 22px;
+}

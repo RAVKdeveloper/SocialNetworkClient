@@ -1,0 +1,68 @@
+.root{
+    padding: 0 20px;
+    border-bottom: 1px solid rgba(165, 165, 165, 0.4);;
+}
+
+.mainContent{
+    display: flex;
+    align-items: flex-start;
+}
+
+.avatar{
+    margin-top: 10px;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    border: 1px solid rgba(165, 165, 165, 0.4);
+}
+
+.textarea{
+    width: 482px;
+    height: 80px;
+    resize: none;
+    padding: 16px 22px 16px 12px;
+    color: var(--color-main);
+    font-weight: 500;
+    overflow-y: scroll;
+}
+
+.textarea::-webkit-scrollbar{
+    width: 0;
+}
+
+.otherContainer{
+    padding-top: 40px;
+    padding-bottom: 20px;
+    position: relative;
+}
+
+.image{
+    border-radius: 10px;
+    width: 410px;
+    width: 100%;
+    border: 1px solid rgba(165, 165, 165, 0.4);
+}
+
+.video{
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+    border-radius: 10px;
+    border: 1px solid rgba(165, 165, 165, 0.4);
+}
+
+.removeContent{
+    position: absolute;
+    right: 0;
+    top: 7px;
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+    opacity: 0.5;
+    transition: opacity .3s ease;
+}
+
+.removeContent:hover{
+    opacity: 1;
+    transition: opacity .3s ease;
+}

@@ -1,0 +1,69 @@
+.root{
+    padding: 0 20px;
+    height: 43px;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid rgba(165, 165, 165, 0.4);
+    position: relative;
+}
+
+.action{
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    color: #626d7a;
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    user-select: none;
+}
+
+.arrow{
+    color: var(--noactive-color);
+    width: 12px;
+    height: 12px;
+    margin-top: 2px;
+}
+
+/* Modal */
+
+.modal{
+    position: absolute;
+    z-index: 100;
+    top: 80%;
+    left: 0;
+    width: 210px;
+    padding: 8px 0;
+    background: var(--back-white);
+    border-radius: 8px;
+    box-shadow: 0 5px 26px 0 rgba(0,0,0,.32);
+
+    pointer-events: none;
+    opacity: 0;
+    transition: all .2s ease;
+}
+
+.modal.active{
+    pointer-events: all;
+    opacity: 1;
+    transition: all .2s ease;
+}
+
+.card{
+    font-size: 13px;
+    font-weight: 500;
+    padding: 8px 0 9px 12px;
+    cursor: pointer;
+    user-select: none;
+    transition: all .2s ease;
+}
+
+.card:hover{
+    background: rgba(235, 242, 250, 0.99);
+    transition: all .2s ease;
+}
+
+.card.active{
+    color: var(--color-accent);
+    background: rgba(235, 242, 250, 0.99);
+}

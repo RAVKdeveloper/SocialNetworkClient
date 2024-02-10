@@ -1,10 +1,10 @@
 .root{
     position: fixed;
-    left: 0;
     top: 0;
+    left: 0;
+    background: rgba(0, 0, 0, 0.5);
     width: 100%;
-    height: 100%;
-    background: rgba( 0, 0, 0, 0.5);
+    min-height: 100%;
 
     display: flex;
     align-items: center;
@@ -23,26 +23,26 @@
 }
 
 .modal{
-    background: var(--back-white);
     border-radius: 16px;
-
+    overflow: hidden;
     display: flex;
     position: relative;
 }
 
 .close{
     position: absolute;
-    width: 30px;
-    height: 30px;
-    top: 10px;
-    right: -50px;
+    width: 50px;
+    height: 50px;
+    top: 8px;
+    right: 0px;
+    height: 20px;
     color: var(--color-white);
     cursor: pointer;
-    opacity: 0.7;
-    transition: all .2s ease;
+    opacity: 0.6;
+    transition: opacity .2s ease;
 }
 
 .close:hover{
     opacity: 1;
-    transition: all .2s ease;
+    transition: opacity .2s ease;
 }

@@ -6,6 +6,7 @@ import { setupListeners } from '@reduxjs/toolkit/query'
 import { auhtApi } from "./Api/User/Auth/authApi";
 import { allHeadersApi } from "./Api/Headers/allHeadersApi";
 import { galeryApi } from "./Api/User/Galery/galeryApi";
+import { wallApi } from "./Api/Wall/wallApi";
 import Auth from "./Slices/Auth/Auth";
 import userGlobal from "./Slices/User/userGlobal";
 import headerModals from "./Slices/Header/headerModals";
@@ -13,12 +14,15 @@ import modalsValue from "./Slices/Header/modalsValue";
 import homeModals from "./Slices/HomeModals/homeModals";
 import createContentAll from "./Slices/createContent/createContentAll/createContentAll";
 import clipUploadSlice from "./Slices/createContent/createContentAll/clipUploadSlice";
+import createWallContent from "./Slices/createContent/createContentAll/createWallContent";
+import headWall from "./Slices/Wall/headWall";
 
 export const store = configureStore({
     reducer: {
         [auhtApi.reducerPath]: auhtApi.reducer,
         [allHeadersApi.reducerPath]: allHeadersApi.reducer,
         [galeryApi.reducerPath]: galeryApi.reducer,
+        [wallApi.reducerPath]: wallApi.reducer,
         Auth,
         userGlobal,
         headerModals,
@@ -26,14 +30,16 @@ export const store = configureStore({
         homeModals,
         createContentAll,
         clipUploadSlice,
+        createWallContent,
+        headWall,
         },
     middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(
         auhtApi.middleware,
         allHeadersApi.middleware,
         galeryApi.middleware,
+        wallApi.middleware
     )
 })
-
 
 
 export type RootState = ReturnType<typeof store.getState>

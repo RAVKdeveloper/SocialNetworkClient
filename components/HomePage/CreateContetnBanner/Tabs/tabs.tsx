@@ -27,10 +27,6 @@ const TabsCreateContent: FC = () => {
                 <MdOutlineSlowMotionVideo className={s.icon} />
                 Клипы
             </article>
-            <article onClick={() => changeTabs(3)} className={activeTab === 3 ? `${s.card} ${s.active}` : s.card}>
-                <PiArticleMedium className={s.icon} />
-                Статьи
-            </article>
         </section>
     )
 }

@@ -1,0 +1,8 @@
+.root{
+    width: 304px;
+    height: 531px;
+}
+
+.video{
+    object-fit: cover;
+}

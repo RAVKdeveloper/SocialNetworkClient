@@ -18,7 +18,7 @@ const UserPhotoGaleryPrewiev: FC = () => {
     const { token } = useAppSelector(userSelect)
     const [ image, setImage ] = useState<File | null>(null)
     const inputRef = useRef<HTMLInputElement>(null)
-    const { data, isLoading } = useGetPreviewPhotoQuery(token)
+    const { data, isLoading } = useGetPreviewPhotoQuery(token, { skip: token ? false : true })
     const dispath = useAppDispatch()
 
     const psevdoInputClick = () => inputRef.current?.click()

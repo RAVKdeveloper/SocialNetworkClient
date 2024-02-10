@@ -1,0 +1,92 @@
+.root{
+    position: absolute;
+    left: -106px;
+    top: -75px;
+    width: 232px;
+    background: var(--back-white);
+    padding: 8px 9px 9px;
+    border-radius: 8px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12);
+    border: 1px solid #dce1e6;
+    pointer-events: none;
+    opacity: 0;
+    transition: all .2s ease;
+}
+
+.root.active{
+    pointer-events: all;
+    opacity: 1;
+    transition: all .2s ease;
+}
+
+.commentsCheckBoxRow{
+    margin-top: 3px;
+    padding: 0 5px;
+
+    display: flex;
+    align-items: center;
+    gap: 11px;
+}
+
+.checkBox{
+    width: 16px;
+    height: 16px;
+    border-radius: 3px;
+    border: 1px solid var(--noactive-color);
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+}
+
+.checkBox.on::before{
+    content: "+";
+    background: var(--color-accent);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    color: var(--color-white);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.checkBoxNotific{
+    width: 16px;
+    height: 16px;
+    border-radius: 3px;
+    border: 1px solid var(--noactive-color);
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+}
+
+.checkBoxNotific.on::before{
+    content: "+";
+    background: var(--color-accent);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    color: var(--color-white);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.text{
+    font-size: 13px;
+    color: var(--color-main);
+}
+
+.notificCheckBoxRow{
+    margin-top: 14px;
+    padding: 0 5px;
+
+    display: flex;
+    align-items: center;
+    gap: 11px;
+}

@@ -7,6 +7,9 @@ interface IinitialState {
     isOpenPhotoModal: boolean
     photoId: string
     isOpenClipModal: boolean
+    isOpenOneClipModal: boolean
+    publishedDateClip: string | null
+    clipCreatorId: number | null
 }
 
 
@@ -15,6 +18,9 @@ const initialState: IinitialState = {
     isOpenPhotoModal: false,
     photoId: '',
     isOpenClipModal: false,
+    isOpenOneClipModal: false,
+    publishedDateClip: null,
+    clipCreatorId: null
 }
 
 
@@ -33,6 +39,15 @@ export const createContentAll = createSlice({
         },
         setIsOpenClipModal: (state, action: PayloadAction<boolean>) => {
             state.isOpenClipModal = action.payload
+        },
+        setIsOpenOneClipModal: (state, action) => {
+            state.isOpenOneClipModal = action.payload
+        },
+        setPublishedDateClip: (state, action: PayloadAction<string>) => {
+            state.publishedDateClip = action.payload
+        },
+        setClipCreatorId: (state, action: PayloadAction<number>) => {
+            state.clipCreatorId = action.payload
         }
     }
 }) 
@@ -40,6 +55,14 @@ export const createContentAll = createSlice({
 
 export const createContentAllSelector = (state: RootState) => state.createContentAll
 
-export const { setActiveTab, setIsOpenPhotoModal, setPhotoId, setIsOpenClipModal } = createContentAll.actions
+export const { 
+    setActiveTab, 
+    setIsOpenPhotoModal, 
+    setPhotoId, 
+    setIsOpenClipModal, 
+    setIsOpenOneClipModal,
+    setPublishedDateClip, 
+    setClipCreatorId
+} = createContentAll.actions
 
 export default createContentAll.reducer

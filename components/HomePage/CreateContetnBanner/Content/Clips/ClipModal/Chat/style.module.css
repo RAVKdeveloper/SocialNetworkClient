@@ -1,0 +1,85 @@
+.root{
+    width: 310px;
+    background: #222222;
+}
+
+.userInfo{
+    padding: 12px 15px 15px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: #ffffff0a;
+}
+
+.avatar{
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+}
+
+.column{
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.nickName{
+    color: var(--color-white);
+    font-size: 13px;
+    font-weight: 500;
+}
+
+.nickName:hover{
+    text-decoration: underline;
+}
+
+.timePublished{
+    font-size: 13px;
+    color: #828282;
+}
+
+.actionsRow {
+    background: #ffffff0a;
+    padding-bottom: 15px;
+    padding-left: 15px;
+    display: flex;
+    align-items: center;
+    gap: 21px;
+}
+
+.likeBody{
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.like{
+    cursor: pointer;
+    transition: all .1s ease;
+}
+
+.like:active{
+    transform: scale(1.1);
+    transition: all .1s ease;
+}
+
+.currentsLikes{
+    color: #939393;
+}
+
+.currentsLikes.red{
+    color: #e64646;
+}
+
+.delete{
+    color: #939393;
+    font-weight: 500;
+    cursor: pointer;
+    user-select: none;
+    transition: color .3s ease;
+}
+
+.delete:hover{
+    color: var(--color-white);
+    transition: color .3s ease;
+}

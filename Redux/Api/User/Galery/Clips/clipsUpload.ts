@@ -12,7 +12,7 @@ interface ReqOneClip {
     token: string
 }
 
-interface ResClip {
+export interface ResClip {
     id: number
     video: string
     preview: string,

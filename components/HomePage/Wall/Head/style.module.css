@@ -1,0 +1,5 @@
+.root{
+    background: var(--back-white);
+    border-radius: 16px;
+    border: 1px solid rgba(165, 165, 165, 0.4);
+}
