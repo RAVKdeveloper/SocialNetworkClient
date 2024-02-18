@@ -1,14 +1,19 @@
 import { wallApi } from "../wallApi";
 import { UserType } from "../../User/Auth/authApi";
-import { VisibleType } from "@/Redux/Slices/createContent/createContentAll/createWallContent";
+import { WallComment } from "../Comments/wallComents";
 
+
+export type TypeLikesPost = {
+    id: number
+    filterUserId: number
+}
 
 interface CreateReq {
     text: string
     contentMedia: string
     typeContentMedia: string
     isComments: boolean
-    visibleAction: VisibleType
+    visibleAction: string
     isSendNotific: boolean
     token: string
 }
@@ -19,18 +24,20 @@ interface UploadReq {
     id: number
 }
 
-interface IPost {
+export interface IPost {
     id: number
     text: string
     contentMedia: string
     typeContentMedia: string
     isComments: boolean
-    visibleAction: VisibleType
+    visibleAction: string
     isSendNotific: boolean
     visible: number
     createAt: string
     updateAt: string
     user: UserType
+    likes: TypeLikesPost[]
+    comments: WallComment[]
 }
 
 interface GetPostsReq {
@@ -38,13 +45,14 @@ interface GetPostsReq {
     page: number
     action: string
     token: string
+    searchText: string
 }
 
 export const wallPost = wallApi.injectEndpoints({
     endpoints: builder => ({
         createPost: builder.mutation<IPost, CreateReq>({
             query: obj => ({
-                url: '',
+                url: 'post',
                 method: 'POST',
                 body: {
                     text: obj.text,
@@ -57,7 +65,8 @@ export const wallPost = wallApi.injectEndpoints({
                 headers: {
                     'Authorization': obj.token
                 }
-            })
+            }),
+            invalidatesTags: ['RefreshWall']
         }),
         uploadFileMedia: builder.mutation<string, UploadReq>({
             query: obj => {
@@ -65,7 +74,7 @@ export const wallPost = wallApi.injectEndpoints({
                 body.append('file', obj.file)
 
                 return {
-                    url: `/${obj.id}`,
+                    url: `post/${obj.id}`,
                     method: 'POST',
                     body,
                     headers: {
@@ -75,15 +84,34 @@ export const wallPost = wallApi.injectEndpoints({
             },
             invalidatesTags: ['RefreshWall']
         }),
-        getWallPosts: builder.query<IPost[], GetPostsReq>({
+        getWallPosts: builder.query<[IPost[], number], GetPostsReq>({
             query: obj => ({
-                url: `?limit=${obj.limit}&page=${obj.page}&action=${obj.action}`,
+                url: `post?limit=${obj.limit}&page=${obj.page}&action=${obj.action}&searchText=${obj.searchText}`,
                 method: 'GET',
                 headers: {
                     'Authorization': obj.token
                 }
             }),
-            providesTags: ['RefreshWall']
+            // providesTags: ['RefreshWall'] 
+        }),
+        deletePost: builder.mutation<string, { id: number, token: string }>({
+            query: obj => ({
+                url: `post/${obj.id}`,
+                method: 'DELETE',
+                headers: {
+                    'Authorization': obj.token
+                }
+            })
+        }),
+        updateCommentsAction: builder.mutation<string, { id: number, token: string, isComments: boolean }>({
+            query: obj => ({
+                url: `options-post/optionComments/${obj.id}`,
+                method: 'PATCH',
+                headers: {
+                    'Authorization': obj.token
+                },
+                body: { isComments: obj.isComments }
+            })
         })
     }),
     overrideExisting: true
@@ -91,4 +119,10 @@ export const wallPost = wallApi.injectEndpoints({
 
 
 
-export const { useCreatePostMutation, useUploadFileMediaMutation, useGetWallPostsQuery } = wallPost
+export const { 
+    useCreatePostMutation, 
+    useUploadFileMediaMutation, 
+    useGetWallPostsQuery, 
+    useDeletePostMutation, 
+    useUpdateCommentsActionMutation 
+} = wallPost

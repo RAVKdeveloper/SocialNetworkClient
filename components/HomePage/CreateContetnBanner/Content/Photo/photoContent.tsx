@@ -1,10 +1,11 @@
 'use client';
 
-import { FC, useRef, useState } from 'react'
+import { FC, useRef, useState, memo } from 'react'
+import dynamic from 'next/dynamic';
 import s from './style.module.css'
-import LoaderPhotoGaleryModal from './LoaderModal/modal'
 import Skeleton from './Skeleton/skeleton';
-import PhotoModal from './PhotoModal/modal';
+const LoaderPhotoGaleryModal = dynamic(() => import('./LoaderModal/modal'), { ssr: false })
+const PhotoModal = dynamic(() => import('./PhotoModal/modal'), { ssr: false })
 
 import { useGetPreviewPhotoQuery } from '@/Redux/Api/User/Galery/galeryApi'
 import { useAppSelector, useAppDispatch } from '@/Redux/hooks/hooks'
@@ -13,7 +14,7 @@ import { SERVERAPI } from '@/assets/config'
 import { setIsOpenPhotoModal, setPhotoId } from '@/Redux/Slices/createContent/createContentAll/createContentAll';
 
 
-const UserPhotoGaleryPrewiev: FC = () => {
+const UserPhotoGaleryPrewiev: FC = memo(() => {
 
     const { token } = useAppSelector(userSelect)
     const [ image, setImage ] = useState<File | null>(null)
@@ -67,6 +68,6 @@ const UserPhotoGaleryPrewiev: FC = () => {
             <PhotoModal />
         </section>
     )
-}
+})
 
 export default UserPhotoGaleryPrewiev

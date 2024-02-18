@@ -27,7 +27,8 @@ const SubmitPostWallContent: FC = () => {
         isComments, 
         isNotification, 
         visibleAction, 
-        isSubmitForm
+        isSubmitForm,
+        contentMedia
     } = useAppSelector(createWallContentSelect)
     const { token } = useAppSelector(userSelect)
     const dispatch = useAppDispatch()
@@ -59,6 +60,12 @@ const SubmitPostWallContent: FC = () => {
         return dispatch(setIsOpenSettingsModal(true))
     }
 
+    const cleanRedactor = () => {
+        dispatch(setIsPreview(true))
+        dispatch(setTextValueWallContent(''))
+        alert('Пост создан')
+    }
+
     const fetchCreatePost = async () => {
         if(token) 
          try{
@@ -67,9 +74,9 @@ const SubmitPostWallContent: FC = () => {
                 text: textValue,
                 isComments,
                 isNotification,
-                visibleAction,
+                visibleAction: visibleAction.value,
                 contentMedia: '',
-                typeContentMedia: '',
+                typeContentMedia: contentMedia?.type ? contentMedia.type : '',
                 token,
                 isSendNotific: isNotification
             }
@@ -78,6 +85,9 @@ const SubmitPostWallContent: FC = () => {
             if(res) {
                 dispatch(setIsSubmitForm(true))
                 setPostId(res.id)
+                if(!media) {
+                    cleanRedactor()
+                }
             }
          } catch {
             alert('Произошла ошибка')
@@ -95,9 +105,8 @@ const SubmitPostWallContent: FC = () => {
               } 
 
              await uploadReq(obj).unwrap()
-             dispatch(setIsPreview(true))
              dispatch(setContentMedia(null))
-             dispatch(setTextValueWallContent(''))
+             cleanRedactor()
              alert('Пост создан')
           } catch {
             alert('Произошла ошибка')

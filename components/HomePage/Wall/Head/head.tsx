@@ -1,6 +1,7 @@
 import { FC, memo } from "react";
 import s from './style.module.css'
 import HeadTabsWall from "./Tabs/tabs";
+import SearchFieldHeadWall from "./Search/search";
 
 import { useAppSelector } from "@/Redux/hooks/hooks";
 import { headWallSelector } from "@/Redux/Slices/Wall/headWall";
@@ -17,10 +18,10 @@ const HeadWall: FC = memo(() => {
                 activeHead === 'filterTabs' ?
                   <HeadTabsWall />
                 :
-                  null
+                  <SearchFieldHeadWall />
             }
         </section>
     )
 })
 
-export default HeadWall
+export default HeadWall 

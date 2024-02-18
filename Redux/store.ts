@@ -16,6 +16,8 @@ import createContentAll from "./Slices/createContent/createContentAll/createCont
 import clipUploadSlice from "./Slices/createContent/createContentAll/clipUploadSlice";
 import createWallContent from "./Slices/createContent/createContentAll/createWallContent";
 import headWall from "./Slices/Wall/headWall";
+import postActions from "./Slices/Wall/postActions";
+
 
 export const store = configureStore({
     reducer: {
@@ -32,6 +34,7 @@ export const store = configureStore({
         clipUploadSlice,
         createWallContent,
         headWall,
+        postActions,
         },
     middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(
         auhtApi.middleware,

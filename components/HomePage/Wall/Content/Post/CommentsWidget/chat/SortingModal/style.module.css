@@ -1,0 +1,44 @@
+.root{
+    position: absolute;
+    left: 0;
+    top: 36px;
+    z-index: 100;
+    background: var(--back-white);
+    width: 210px;
+    padding: 8px 0;
+    border-radius: 8px;
+    box-shadow: 0 5px 26px 0 rgba(0,0,0,.32);
+
+    opacity: 0;
+    pointer-events: none;
+    transition: all .2s ease;
+}
+
+.root.active{
+    opacity: 1;
+    pointer-events: all;
+    transition: all .2s ease;
+}
+
+.card{
+    height: 35px;
+    padding: 8px 0 9px 12px;
+    display: flex;
+    align-items: center;
+    font-size: 12.5px;
+    color: var(--color-main);
+    font-weight: 600;
+    cursor: pointer;
+    user-select: none;
+    transition: all .2s ease;
+}
+
+.card:hover{
+    background: rgba(235, 242, 250, 0.99);
+    transition: all .2s ease;
+}
+
+.card.active{
+    background: rgba(235, 242, 250, 0.99);
+    transition: all .2s ease;
+}

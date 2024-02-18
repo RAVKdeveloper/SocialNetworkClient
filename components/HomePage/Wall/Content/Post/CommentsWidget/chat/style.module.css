@@ -1,0 +1,105 @@
+.sorting{
+    padding: 14px 0px 4px;
+    display: flex;
+    align-items: center;
+    gap: 3px;
+    font-size: 12.5px;
+    color: #2a5885;
+    user-select: none;
+    cursor: pointer;
+    position: relative;
+}
+
+.chat{
+    padding: 10px 0;
+    overflow-y: scroll;
+    max-height: 685px;
+    width: 100%;
+}
+
+.chat::-webkit-scrollbar{
+    width: 0;
+}
+
+.commentBody{
+    padding: 7px 0;
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    border-bottom: 1px solid #dce1e6;
+    position: relative;
+}
+
+.avatar{
+    border-radius: 50%;
+    width: 34px;
+    height: 34px;
+    border: 1px solid rgba(165, 165, 165, 0.4);
+}
+
+.column{
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+    width: 100%;
+}
+
+.userRow{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--color-main);
+    font-size: 12.5px;
+    font-weight: 500;
+}
+
+.isauthor{
+    color: #2a5885;
+}
+
+.text{
+    font-size: 13px;
+    color: var(--color-main);
+    font-weight: 500;
+    word-wrap: break-word;
+    line-height: 1.36
+}
+
+.time{
+    font-size: 12.5px;
+    color: #626d7a;
+    font-weight: 500;
+}
+
+.action{
+    padding-left: 10px;
+    color: #2a5885;
+    font-size: 12.5px;
+    font-weight: 500;
+    user-select: none;
+    cursor: pointer;
+}
+
+.deleteIcon{
+    position: absolute;
+    top: 7px;
+    right: 0;
+    width: 24px;
+    height: 24px;
+    color: var(--noactive-color);
+    cursor: pointer;
+    opacity: 0;
+    transition: all .2s ease;
+}
+
+.commentBody:hover .deleteIcon{
+    opacity: 1;
+    transition: all .2s ease;
+}
+
+.commentImg{
+    width: 289px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 4px;
+}

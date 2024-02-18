@@ -5,8 +5,8 @@ import { SERVERAPI } from "@/assets/config";
 
 export const wallApi = createApi({
     reducerPath: 'wallApi',
-    baseQuery: fetchBaseQuery({ baseUrl: `${SERVERAPI}wall/post` }),
-    tagTypes: ['RefreshWall'],
+    baseQuery: fetchBaseQuery({ baseUrl: `${SERVERAPI}wall` }),
+    tagTypes: ['RefreshWall', 'Comments'],
     endpoints: builder => ({})
 })
 

@@ -1,0 +1,26 @@
+.root{
+    position: absolute;
+    top: 18px;
+    right: 0;
+    width: 188px;
+    padding: 4px 0;
+    background: var(--back-white);
+    border-radius: 8px;
+    box-shadow: 0 20px 40px rgba(0,0,0,.32);
+}
+
+.action{
+    line-height: 18px;
+    padding: 8px 15px;
+    color: var(--color-main);
+    transition: all .2s ease;
+    font-size: 12px;
+    font-weight: 500;
+    user-select: none;
+    cursor: pointer;
+}
+
+.action:hover{
+    background: rgba(174, 183, 194, 0.12);
+    transition: all .2s ease;
+}

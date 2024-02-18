@@ -11,12 +11,14 @@ type TabsAction = {
 interface Iinitialstate {
     activeHead: 'filterTabs' | 'search'
     tabsAction: TabsAction
+    searchValue: string
 }
 
 
 const initialState: Iinitialstate = {
     activeHead: 'filterTabs',
-    tabsAction: { preview: 'Все записи', value: 'all' }
+    tabsAction: { preview: 'Все записи', value: 'all' },
+    searchValue: ''
 }
 
 
@@ -30,6 +32,9 @@ export const headWall = createSlice({
         },
         setTabsAction: (state, action: PayloadAction<TabsAction>) => {
             state.tabsAction = action.payload
+        },
+        setSearchValue: (state, action: PayloadAction<string>) => {
+            state.searchValue = action.payload
         }
     }
 })
@@ -37,6 +42,6 @@ export const headWall = createSlice({
 
 export const headWallSelector = (state: RootState) => state.headWall
 
-export const { setActiveHead, setTabsAction } = headWall.actions
+export const { setActiveHead, setTabsAction, setSearchValue } = headWall.actions
 
 export default headWall.reducer

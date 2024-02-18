@@ -1,9 +1,9 @@
-import { FC } from 'react'
+import { FC, memo } from 'react'
 import s from './style.module.css'
 import dynamic from 'next/dynamic'
 
-const UploadClipsModal = dynamic(() => import('./UploadModal/modal'))
-const ClipModal = dynamic(() => import('./ClipModal/modal'))
+const UploadClipsModal = dynamic(() => import('./UploadModal/modal'), { ssr: false })
+const ClipModal = dynamic(() => import('./ClipModal/modal'), { ssr: false })
 import SkeletonClips from './Skeleton/skeletom'
 
 import { setIsOpenClipModal } from '@/Redux/Slices/createContent/createContentAll/createContentAll'
@@ -18,7 +18,7 @@ import { MdRemoveRedEye } from "react-icons/md";
 import { FaLock } from "react-icons/fa6";
 
 
-const ClipsContentHomePage: FC = () => {
+const ClipsContentHomePage: FC = memo(() => {
 
     const { token } = useAppSelector(userSelect)
     const dispatch = useAppDispatch()
@@ -73,6 +73,6 @@ const ClipsContentHomePage: FC = () => {
             <ClipModal />
         </section>
     )
-} 
+})
 
 export default ClipsContentHomePage
