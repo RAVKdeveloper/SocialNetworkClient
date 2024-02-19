@@ -19,6 +19,8 @@ interface Iinitialstate {
     isOpenSortingCommentsModal: boolean
     value: string
     answerNick: string
+    isOpenPostModal: boolean
+    isOpenCommentsPostModal: boolean
 }
 
 
@@ -32,7 +34,9 @@ const initialState: Iinitialstate = {
     sortingComments: { preview: 'Сначала старые', value: 'ASC' },
     isOpenSortingCommentsModal: false,
     value: '',
-    answerNick: ''
+    answerNick: '',
+    isOpenPostModal: false,
+    isOpenCommentsPostModal: false
 }
 
 
@@ -69,6 +73,12 @@ export const postActions = createSlice({
         },
         setAnswerNick: (state, action: PayloadAction<string>) => {
             state.answerNick = action.payload
+        },
+        setIsOpenPostModal: (state, action: PayloadAction<boolean>) => {
+            state.isOpenPostModal = action.payload
+        },
+        setIsOpenCommentsPostModal: (state, action: PayloadAction<boolean>) => {
+            state.isOpenCommentsPostModal = action.payload
         }
     }
 })
@@ -86,7 +96,9 @@ export const {
     setSortingComments,
     setIsOpenSortingCommentsModal,
     setValue,
-    setAnswerNick 
+    setAnswerNick,
+    setIsOpenPostModal,
+    setIsOpenCommentsPostModal 
 } = postActions.actions
 
 export default postActions.reducer

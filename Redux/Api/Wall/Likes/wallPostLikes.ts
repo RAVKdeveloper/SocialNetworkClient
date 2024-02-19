@@ -17,7 +17,8 @@ export const wallPostLikes = wallApi.injectEndpoints({
                 headers: {
                     'Authorization': obj.token
                 }
-            })
+            }),
+            invalidatesTags: ['OnePost']
         }),
         deletePostLike: builder.mutation<string, IReq>({
             query: obj => ({
@@ -26,7 +27,8 @@ export const wallPostLikes = wallApi.injectEndpoints({
                 headers: {
                     'Authorization': obj.token
                 }
-            })
+            }),
+            invalidatesTags: ['OnePost']
         })
     }),
     overrideExisting: true

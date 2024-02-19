@@ -6,13 +6,13 @@ import dynamic from 'next/dynamic';
 const PostOptionModal = dynamic(() => import('./modal/modal'), { ssr: false })
 const CommentsPostWidget = dynamic(() => import('./CommentsWidget/comments'), { ssr: false })
 
-import { UserType } from '@/Redux/Api/User/Auth/authApi'
+import type { UserType } from '@/Redux/Api/User/Auth/authApi'
 import { SERVERAPI } from '@/assets/config';
-import { TypeLikesPost } from '@/Redux/Api/Wall/Post/wallPost';
+import type { TypeLikesPost } from '@/Redux/Api/Wall/Post/wallPost';
 import { useAppDispatch, useAppSelector } from '@/Redux/hooks/hooks';
 import { userSelect } from '@/Redux/Slices/User/userGlobal';
 import { useAddPostLikeMutation, useDeletePostLikeMutation } from '@/Redux/Api/Wall/Likes/wallPostLikes';
-import { postactionsSelector, setPostId, setIsOpenOptions, setCommentsPostId, setIsOpenComments } from '@/Redux/Slices/Wall/postActions';
+import { postactionsSelector, setPostId, setIsOpenOptions, setCommentsPostId, setIsOpenComments, setIsOpenPostModal } from '@/Redux/Slices/Wall/postActions';
 import { WallComment } from '@/Redux/Api/Wall/Comments/wallComents';
 
 import { SlOptions } from "react-icons/sl";
@@ -94,6 +94,11 @@ const PostWall: FC<Props> = ({
         return dispatch(setIsOpenComments(true))
     }
 
+    const openModal = (id: number) => {
+      dispatch(setIsOpenPostModal(true))
+      dispatch(setPostId(id))
+    }
+
     const userAvatar = user.avatar ? `${SERVERAPI}${user.avatar}` : emptyAvatar.src
 
     const timeStamp = new Date(createAt).toLocaleDateString(navigator.language, 
@@ -131,7 +136,7 @@ const PostWall: FC<Props> = ({
                   }
                   </div>
               </div>
-              <div className={s.content}>
+              <div onClick={() => openModal(id)} className={s.content}>
               <p className={s.text}>
                 {text}
               </p>

@@ -9,11 +9,13 @@ const WallContentHomePage = dynamic(() => import('./Content/wallContent'), {
     loading: () => <WallLoader />
 })
 const WallSearchContentHomePage = dynamic(() => import('./Content/wallContentSearch'))
+const PostWallModal = dynamic(() => import('./Content/PostModal/PostModal'))
 
 import { useAppSelector } from '@/Redux/hooks/hooks'
 import { headWallSelector } from '@/Redux/Slices/Wall/headWall'
 
 
+// eslint-disable-next-line react/display-name
 const WallHomePage: FC = memo(() => {
 
     const { searchValue } = useAppSelector(headWallSelector)
@@ -28,6 +30,7 @@ const WallHomePage: FC = memo(() => {
                 :
                 <WallContentHomePage />
             }
+            <PostWallModal />
         </section>
     )
 })

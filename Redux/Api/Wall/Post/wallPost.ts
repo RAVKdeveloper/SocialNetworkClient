@@ -48,6 +48,12 @@ interface GetPostsReq {
     searchText: string
 }
 
+interface GetOneReq {
+    id: number
+    token: string
+}
+
+
 export const wallPost = wallApi.injectEndpoints({
     endpoints: builder => ({
         createPost: builder.mutation<IPost, CreateReq>({
@@ -94,6 +100,16 @@ export const wallPost = wallApi.injectEndpoints({
             }),
             // providesTags: ['RefreshWall'] 
         }),
+        getOnePost: builder.query<IPost, GetOneReq>({
+            query: obj => ({
+                url: `post/${obj.id}`,
+                method: 'GET',
+                headers: {
+                    'Authorization': obj.token
+                }
+            }),
+            providesTags: ['OnePost']
+        }),
         deletePost: builder.mutation<string, { id: number, token: string }>({
             query: obj => ({
                 url: `post/${obj.id}`,
@@ -124,5 +140,6 @@ export const {
     useUploadFileMediaMutation, 
     useGetWallPostsQuery, 
     useDeletePostMutation, 
-    useUpdateCommentsActionMutation 
+    useUpdateCommentsActionMutation,
+    useGetOnePostQuery 
 } = wallPost

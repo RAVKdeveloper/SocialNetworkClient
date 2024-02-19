@@ -1,0 +1,98 @@
+.root{
+    padding: 0 25px;
+}
+
+.statusRow{
+    padding: 12px 0;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.statusLike{
+    width: 18px;
+    height: 18px;
+}
+
+.currentLikes{
+    font-size: 13px;
+    color: var(--noactive-color);
+}
+
+.row{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.actionBtns{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.btnLike{
+    padding: 12px 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 112.5px;
+    height: 32px;
+    gap: 5px;
+    background: #f0f2f5;
+    border-radius: 32px;
+    cursor: pointer;
+    user-select: none;
+}
+
+.like{
+    width: 20px;
+    height: 20px;
+}
+
+.btnLike span{
+    font-size: 13px;
+    color: #626d7a;
+    font-weight: 500;
+}
+
+.btnLike.active{
+    background: #FFEDED;
+}
+
+.btnLike.active span{
+    color: #FF5C5C;
+}
+
+.visible{
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    color: var(--noactive-color);
+    font-size: 13px;
+}
+
+.commentsBody{
+    padding: 4px 12px;
+    height: 32px;
+    border-radius: 32px;
+    background: #f0f2f5;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    cursor: pointer;
+    transition: all .3s ease;
+}
+
+.commentsBody:hover{
+    background: #dfe3e9;
+    transition: all .3s ease;
+}
+
+.commentsIcon{
+    width: 20px;
+    height: 20px;
+    color: var(--noactive-color);
+}
