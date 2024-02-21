@@ -1,0 +1,47 @@
+.root{
+    padding: 8px;
+    background: var(--back-white);
+    border: 1px solid rgba(165, 165, 165, 0.4);
+    border-radius: 16px;
+    width: 345px;
+}
+
+.title{
+    margin: 12px 0 8px;
+    padding: 3px 12px 1px;
+    font-weight: 600;
+}
+
+.row{
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    padding-top: 4px;
+    padding-bottom: 4px;
+}
+
+.card{
+    padding: 4px 8px 8px 8px;
+    cursor: pointer;
+    user-select: none;
+    transition: all .2s ease;
+    border-radius: 8px;
+}
+
+.card:hover{
+    background: rgba(174, 183, 194, 0.18);
+    transition: all .2s ease;
+}
+
+.icon{
+    border-radius: 50%;
+    border: 1px solid rgba(165, 165, 165, 0.4);
+}
+
+.name{
+    padding-top: 5px;
+    color: var(--color-main);
+    text-align: center;
+    font-size: 12px;
+    font-weight: 500;
+}

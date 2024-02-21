@@ -1,8 +1,13 @@
+'use client';
+
 import { FC } from 'react'
 import s from './style.module.css'
 import Link from 'next/link'
-import ProfileModal from './ProfileModal/modal'
-import UploadAvatarModal from './AvatarModal/modal'
+import dynamic from 'next/dynamic'
+import Image from 'next/image'
+
+const ProfileModal = dynamic(() => import('./ProfileModal/modal'))
+const UploadAvatarModal = dynamic(() => import('./AvatarModal/modal'))
 import Skeleton from './Skeleton/skeleton'
 
 import { useAppDispatch, useAppSelector } from '@/Redux/hooks/hooks'
@@ -34,7 +39,12 @@ const UserInfoHomePage: FC = () => {
             <section className={s.root}>
                 <div className={s.contentInfo}>
                     <div onClick={openAvatarModal} className={s.avatarContainer}>
-                       <img src={isAvatar.toString()} alt='avatar' width={150} height={150} className={s.avatar} />
+                       <Image 
+                       loader={() => isAvatar.toString()} 
+                       src={isAvatar.toString()} alt='avatar' 
+                       width={150} height={150} 
+                       className={s.avatar} 
+                       />
                        <div className={s.isOnline}></div>
                     </div>
                     <div className={s.column}>

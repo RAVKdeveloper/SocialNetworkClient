@@ -7,6 +7,7 @@ import { auhtApi } from "./Api/User/Auth/authApi";
 import { allHeadersApi } from "./Api/Headers/allHeadersApi";
 import { galeryApi } from "./Api/User/Galery/galeryApi";
 import { wallApi } from "./Api/Wall/wallApi";
+import { friendsApi } from "./Api/Friends/friendsApi";
 import Auth from "./Slices/Auth/Auth";
 import userGlobal from "./Slices/User/userGlobal";
 import headerModals from "./Slices/Header/headerModals";
@@ -25,6 +26,7 @@ export const store = configureStore({
         [allHeadersApi.reducerPath]: allHeadersApi.reducer,
         [galeryApi.reducerPath]: galeryApi.reducer,
         [wallApi.reducerPath]: wallApi.reducer,
+        [friendsApi.reducerPath]: friendsApi.reducer,
         Auth,
         userGlobal,
         headerModals,
@@ -40,7 +42,8 @@ export const store = configureStore({
         auhtApi.middleware,
         allHeadersApi.middleware,
         galeryApi.middleware,
-        wallApi.middleware
+        wallApi.middleware,
+        friendsApi.middleware
     )
 })
 

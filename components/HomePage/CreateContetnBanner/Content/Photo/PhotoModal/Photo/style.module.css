@@ -8,6 +8,7 @@
     min-width: 410px;
     min-height: 410px;
     border-top-left-radius: 16px;
+    object-fit: cover;
 }
 
 .actionsRow{

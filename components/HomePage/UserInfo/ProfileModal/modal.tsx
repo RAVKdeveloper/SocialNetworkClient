@@ -20,6 +20,8 @@ const ProfileModal: FC = () => {
     const closeModal = () => dispatch(setOpenProfileModal(false))
 
     const isOpen = openProfileModal ? `${s.root} ${s.active}` : s.root
+
+    if(!user) return
  
     return (
 
@@ -35,14 +37,20 @@ const ProfileModal: FC = () => {
                         <SlPresent className={s.icon} />
                         <div className={s.text}>
                         День рождения:
-                        <span>{user?.birthday}</span>
+                        <span>
+                        {
+                        new Date(user.birthday).toLocaleDateString(navigator.language, 
+                        { 
+                           year: 'numeric', month: 'long', day: 'numeric'
+                        })}
+                         </span>
                         </div>
                     </article>
                     <article className={s.card}>
                         <IoHomeOutline className={s.icon} />
                         <div className={s.text}>
                         Город:
-                        <span>{user?.city ? user?.city : 'Город невыбран'}</span>
+                        <span>{user.city ? user.city : 'Город невыбран'}</span>
                         </div>
                     </article>
                   </div>
