@@ -7,18 +7,28 @@ type TabsAction = {
     value: 'all' | 'archive'
 }
 
+type TypeGlobalSortingTabs = {
+    preview: string
+    value: 'all' | 'search'
+}
 
 interface Iinitialstate {
     activeHead: 'filterTabs' | 'search'
     tabsAction: TabsAction
     searchValue: string
+    globalSearchValue: string,
+    globalSortingTabs: TypeGlobalSortingTabs
+    observerGlobalPosts: boolean
 }
 
 
 const initialState: Iinitialstate = {
     activeHead: 'filterTabs',
     tabsAction: { preview: 'Все записи', value: 'all' },
-    searchValue: ''
+    searchValue: '',
+    globalSearchValue: '',
+    globalSortingTabs: { preview: 'Новости', value: 'all' },
+    observerGlobalPosts: false
 }
 
 
@@ -35,6 +45,15 @@ export const headWall = createSlice({
         },
         setSearchValue: (state, action: PayloadAction<string>) => {
             state.searchValue = action.payload
+        },
+        setGlobalSearchValue: (state, action: PayloadAction<string>) => {
+            state.globalSearchValue = action.payload
+        },
+        setGlobalSortingTabs: (state, action: PayloadAction<TypeGlobalSortingTabs>) => {
+            state.globalSortingTabs = action.payload
+        },
+        setObserverGlobalPosts: (state, action: PayloadAction<boolean>) => {
+            state.observerGlobalPosts = action.payload
         }
     }
 })
@@ -42,6 +61,13 @@ export const headWall = createSlice({
 
 export const headWallSelector = (state: RootState) => state.headWall
 
-export const { setActiveHead, setTabsAction, setSearchValue } = headWall.actions
+export const { 
+    setActiveHead, 
+    setTabsAction, 
+    setSearchValue, 
+    setGlobalSearchValue, 
+    setGlobalSortingTabs,
+    setObserverGlobalPosts 
+} = headWall.actions
 
 export default headWall.reducer

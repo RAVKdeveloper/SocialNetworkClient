@@ -2,6 +2,7 @@ import { FC, useEffect, useState } from 'react'
 import s from './style.module.css'
 import Link from 'next/link';
 import dynamic from 'next/dynamic';
+import Image from 'next/image';
 
 const PostOptionModal = dynamic(() => import('./modal/modal'), { ssr: false })
 const CommentsPostWidget = dynamic(() => import('./CommentsWidget/comments'), { ssr: false })
@@ -106,7 +107,7 @@ const PostWall: FC<Props> = ({
 
     useEffect(() => {
        (thisUser && 
-       likes.map(el => el.filterUserId === thisUser.id).length > 0 
+       likes.filter(el => el.filterUserId === thisUser.id).length > 0 
        ? 
        setIsLike(true) 
        : 
@@ -122,19 +123,29 @@ const PostWall: FC<Props> = ({
         <article key={id} className={s.root}>
               <div className={s.postHeader}>
                   <div className={s.userInfo}>
-                     <img src={userAvatar} alt={`${user.name} ${user.surname}`} className={s.avatar} />
+                     <Image
+                     loader={() => userAvatar} 
+                     src={userAvatar} 
+                     alt={`${user.name} ${user.surname}`} 
+                     className={s.avatar} 
+                     width={40}
+                     height={40}
+                     />
                      <div className={s.column}>
                         <Link href={'/'} className={s.name}>{user.name} {user.surname}</Link>
                         <span className={s.time}>{timeStamp}</span>
                      </div>
                   </div>
-                  <div className={s.optionBody}>
+                  {
+                    thisUser && thisUser.id === user.id &&
+                     <div className={s.optionBody}>
                   <SlOptions onClick={() => openOptions(id)} className={s.optionsIcon} />
                   {
                   postId && postId === id && isOpenOptions &&
                   <PostOptionModal isComments={isComments} />
                   }
-                  </div>
+                     </div>
+                  }
               </div>
               <div onClick={() => openModal(id)} className={s.content}>
               <p className={s.text}>
@@ -145,7 +156,14 @@ const PostWall: FC<Props> = ({
                 <div className={s.mediaContainer}>
                     {
                         typeContentMedia === 'image' ?
-                          <img src={`${SERVERAPI}${contentMedia}`} alt="image" className={s.image} />
+                          <Image 
+                          loader={() => `${SERVERAPI}${contentMedia}`}
+                          src={`${SERVERAPI}${contentMedia}`} 
+                          alt="image" 
+                          className={s.image} 
+                          width={508.4}
+                          height={550}
+                          />
                           :
                           <video src={`${SERVERAPI}${contentMedia}`} controls className={s.video} />
                     }

@@ -1,0 +1,29 @@
+.swiper-button-prev {
+     background: var(--back-white);
+     width: 40px !important;
+     height: 40px !important;
+     border-radius: 50%;
+}
+       
+.swiper-button-prev::before {
+     content: '<';
+     color: #000 !important;
+     font-size: 20px;
+}
+    
+.swiper-button-next {
+    background: var(--back-white);
+    width: 40px !important;
+    height: 40px !important;
+    border-radius: 50%;
+}
+    
+.swiper-button-next::before {
+    content: '>';
+    color: #000 !important;
+    font-size: 20px;
+}
+
+.swiper-button-prev::after, .swiper-button-next::after {
+    display: none;
+}

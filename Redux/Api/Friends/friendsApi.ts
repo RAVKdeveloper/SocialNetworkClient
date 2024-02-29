@@ -3,7 +3,7 @@ import { SERVERAPI } from "@/assets/config";
 import type { UserType } from "../User/Auth/authApi";
 
 
-interface FriendsType {
+export interface FriendsType {
     id: number
     status: boolean
     createAt: string
@@ -16,6 +16,16 @@ type ResPreview = [
     number
 ]
 
+interface GetGlobalWallPreview {
+    limit: number
+    city: string | null
+    token: string
+}
+
+interface Iinvite {
+    token: string
+    userId: number
+}
 
 export const friendsApi = createApi({
     reducerPath: 'friendsApi',
@@ -38,11 +48,35 @@ export const friendsApi = createApi({
                     'Authorization': obj.token
                 }
             })
+        }),
+        getFriendGlobalWall: builder.query<UserType[], GetGlobalWallPreview>({
+            query: ({ limit, city, token }) => ({
+                url: `wallPreview?limit=${limit}&city=${city}`,
+                method: 'GET',
+                headers: {
+                    'Authorization': token
+                }
+            }) 
+        }),
+        inviteFriend: builder.mutation<FriendsType, Iinvite>({
+            query: ({ token, userId }) => ({
+                url: '',
+                method: 'POST',
+                headers: {
+                    'Authorization': token
+                },
+                body: { userId }
+            }) 
         })
     })
 })
 
 
-export const { useGetAllFriendsQuery, useGetFriendsPreviewQuery } = friendsApi
+export const { 
+    useGetAllFriendsQuery, 
+    useGetFriendsPreviewQuery, 
+    useGetFriendGlobalWallQuery, 
+    useInviteFriendMutation 
+} = friendsApi
 
 export default friendsApi.reducer

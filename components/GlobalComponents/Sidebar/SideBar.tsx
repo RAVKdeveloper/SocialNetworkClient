@@ -19,7 +19,7 @@ const SideBar: FC = () => {
                <FaRegUserCircle className={s.icon} />
                Моя страница
             </Link>
-            <Link href={'/'} className={s.card}>
+            <Link href={'/news'} className={s.card}>
                <HiOutlineNewspaper className={s.icon} />
                  Новости
             </Link>

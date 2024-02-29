@@ -16,7 +16,7 @@ import { IoIosClose } from "react-icons/io";
 
 const ChatCommentsWallPost: FC<{ userId: number }> = ({ userId: useCreatorId }) => {
 
-    const { token } = useAppSelector(userSelect)
+    const { token, user: thisUser } = useAppSelector(userSelect)
     const { commentsPostId, sortingComments, isOpenSortingCommentsModal } = useAppSelector(postactionsSelector)
     const dispatch = useAppDispatch()
     const { data = [] } = useGetWallCommentsQuery(
@@ -78,8 +78,11 @@ const ChatCommentsWallPost: FC<{ userId: number }> = ({ userId: useCreatorId }) 
                             </span>
                             <span onClick={() => changeAnswerNick(user.name)} className={s.action}>Ответить</span>
                           </p>
-                       </div>  
-                       <IoIosClose onClick={() => fetchDeleteComment(id)} className={s.deleteIcon} />
+                       </div>
+                       {
+                          thisUser && thisUser.id === user.id &&
+                           <IoIosClose onClick={() => fetchDeleteComment(id)} className={s.deleteIcon} />
+                       }
                     </article>
                   ))
                 }

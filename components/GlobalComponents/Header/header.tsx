@@ -1,12 +1,15 @@
 import React, { FC, useCallback, useRef, useState } from 'react'
-import debonce from 'lodash.debounce'
-import s from './style.module.css'
 import Image from 'next/image'
+import dynamic from 'next/dynamic'
+import s from './style.module.css'
+import debonce from 'lodash.debounce'
+
 import SearchHeaderModal from './Modals/SearchModal/modal'
 import UserInfoModalHeader from './Modals/UserInfoModal/modal'
+const NotificationModal = dynamic(() => import('./Modals/NotificModal/notificModal'), { ssr: false })
 
 import { useAppDispatch, useAppSelector } from '@/Redux/hooks/hooks'
-import { headerModalsSelector, setIsOpenSearchModal, setIsOpenUserInfoModal } from '@/Redux/Slices/Header/headerModals'
+import { headerModalsSelector, setIsOpenSearchModal, setIsOpenUserInfoModal, setIsOpneNotific } from '@/Redux/Slices/Header/headerModals'
 import { setSearchValue } from '@/Redux/Slices/Header/modalsValue'
 import { userSelect } from '@/Redux/Slices/User/userGlobal'
 import { SERVERAPI } from '@/assets/config'
@@ -20,7 +23,7 @@ import { IoIosArrowDown } from "react-icons/io";
 
 const Header: FC = () => {
 
-    const { isOpenUserInfo } = useAppSelector(headerModalsSelector)
+    const { isOpenUserInfo, isOpenNotific, countUnread } = useAppSelector(headerModalsSelector)
     const { user } = useAppSelector(userSelect)
     const dispatch = useAppDispatch()
     const searchBodyRef = useRef<HTMLDivElement>(null)
@@ -32,6 +35,7 @@ const Header: FC = () => {
        if(isOpenUserInfo) return dispatch(setIsOpenUserInfoModal(false))
        return dispatch(setIsOpenUserInfoModal(true))
     }
+    const openNotificModal = () => dispatch(setIsOpneNotific(!isOpenNotific))
 
     const addSearchValue = useCallback(
         debonce((str: string) => dispatch(setSearchValue(str)), 400),
@@ -44,6 +48,8 @@ const Header: FC = () => {
     }
 
     const isAvatar = user && user.avatar && user.avatar !== 'none' ? `${SERVERAPI}${user.avatar}` : avatar 
+
+    const isOpenNotificClass = isOpenNotific ? `${s.bellBody} ${s.open}` : s.bellBody
 
     return (
 
@@ -60,9 +66,15 @@ const Header: FC = () => {
                        <input value={localSearchValue} onChange={OnChangeSearch} ref={inputRef} type="text" className={s.search} placeholder='Поиск' />
                        <SearchHeaderModal parent={searchBodyRef} input={inputRef} />
                     </div>
-                    <div className={s.bellBody}>
+                    <div onClick={openNotificModal} className={isOpenNotificClass}>
                         <GoBell className={s.bell} />
-                        <div className={s.notifiCount}>1</div>
+                        {
+                          countUnread === 0 ? 
+                          null 
+                          : 
+                          <div className={s.notifiCount}>{countUnread}</div>
+                        }
+                        <NotificationModal />
                     </div>
                 </div>
             </section>

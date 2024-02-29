@@ -90,6 +90,10 @@
     color: var(--noactive-color);
 }
 
+.bellBody.open{
+    background: var(--back-main);
+}
+
 .notifiCount{
     position: absolute;
     width: 15.2px;

@@ -13,6 +13,7 @@ import { IPost } from '@/Redux/Api/Wall/Post/wallPost'
 import { MdOutlineWebAsset } from "react-icons/md";
 
 
+// eslint-disable-next-line react/display-name
 const WallContentHomePage: FC = memo(() => {
 
     const { ref, inView } = useInView({ threshold: 1 })
@@ -27,14 +28,18 @@ const WallContentHomePage: FC = memo(() => {
         action: 'all',
         searchText: '',
         token
-    }, { skip: (token ? false : true) || (activeHead === 'search' ? true : false) })
-
-
+    }, { skip: 
+      (token ? false : true) || 
+      (activeHead === 'search' ? true : false) || 
+      (window.location.href === 'http://localhost:3000/' ? false : true) 
+    })
 
     useEffect(() => {
-       if(data && activeHead === 'filterTabs') setPosts(prev => [...prev, ...data[0]])
+
+       if(data && activeHead === 'filterTabs' && window.location.href === 'http://localhost:3000/') setPosts(prev => [...prev, ...data[0]])
        else { setPosts([]), setPage(1) }
-    }, [data, activeHead, searchValue])
+
+    }, [data, activeHead, searchValue, window.location.href])
 
     useEffect(() => {
        setTimeout(() => setIsVisible(true), 1000)
@@ -55,21 +60,10 @@ const WallContentHomePage: FC = memo(() => {
                  posts.length > 0 ?
                  <>
                  {
-                   posts.map(({ id, user, createAt, text, contentMedia, typeContentMedia, isComments, visible, visibleAction, updateAt, likes, comments }, i) => (
+                   posts.map((post, i) => (
                      <PostWall 
-                       key={`${id}${i}`}
-                       id={id}
-                       user={user}
-                       text={text}
-                       createAt={createAt}
-                       contentMedia={contentMedia}
-                       typeContentMedia={typeContentMedia}
-                       isComments={isComments}
-                       visible={visible}
-                       visibleAction={visibleAction}
-                       updateAt={updateAt}
-                       likes={likes}
-                       comments={comments}
+                       key={`${post.id}${i}`}
+                      {...post}
                      />
                    ))
                  }

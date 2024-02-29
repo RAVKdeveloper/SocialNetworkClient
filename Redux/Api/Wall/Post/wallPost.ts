@@ -128,6 +128,15 @@ export const wallPost = wallApi.injectEndpoints({
                 },
                 body: { isComments: obj.isComments }
             })
+        }),
+        getGlobalWall: builder.query<[IPost[], number], GetPostsReq>({
+            query: obj => ({
+                url: `post/globalWall?limit=${obj.limit}&page=${obj.page}&action=${obj.action}&searchText=${obj.searchText}`,
+                method: 'GET',
+                headers: {
+                    'Authorization': obj.token
+                },
+            })
         })
     }),
     overrideExisting: true
@@ -141,5 +150,6 @@ export const {
     useGetWallPostsQuery, 
     useDeletePostMutation, 
     useUpdateCommentsActionMutation,
-    useGetOnePostQuery 
+    useGetOnePostQuery,
+    useGetGlobalWallQuery 
 } = wallPost

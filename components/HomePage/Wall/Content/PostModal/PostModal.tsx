@@ -1,6 +1,7 @@
 import { FC, useState } from 'react'
 import Link from 'next/link'
 import dynamic from 'next/dynamic'
+import Image from 'next/image'
 import s from './style.module.css'
 
 const OptionsModal = dynamic(() => import('../Post/modal/modal'))
@@ -64,10 +65,18 @@ const PostWallModal: FC = () => {
                 <div className={s.content}>
                     <p className={s.text}>{data.text}</p>
                     {
-                        data.typeContentMedia === 'image' ?
-                        <img src={`${SERVERAPI}${data.contentMedia}`} alt={data.contentMedia} className={s.image} />
-                        :
-                        <video controls src={`${SERVERAPI}${data.contentMedia}`} className={s.video} />
+                        data.typeContentMedia === 'image' &&
+                        <Image 
+                         loader={() => `${SERVERAPI}${data.contentMedia}`}
+                         src={`${SERVERAPI}${data.contentMedia}`} 
+                         alt={data.contentMedia} className={s.image} 
+                         width={605.4}
+                         height={351}
+                         />
+                    }
+                    {
+                        data.typeContentMedia === 'video' &&
+                        <video controls src={`${SERVERAPI}${data.contentMedia}`} className={s.video} /> 
                     }
                 </div>
                 <ActionsRowPostModal 

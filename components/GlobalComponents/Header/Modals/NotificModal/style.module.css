@@ -1,0 +1,118 @@
+.root{
+    position: absolute;
+    left: 0;
+    top: 100%;
+    width: 470px;
+    background: var(--back-white);
+    box-shadow: 0 20px 40px 0 rgba(0,0,0,.3);
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+    z-index: 500;
+
+    pointer-events: none;
+    opacity: 0;
+    transition: all .3s ease;
+}
+
+.root.open{
+    pointer-events: all;
+    opacity: 1;
+    transition: all .3s ease;
+}
+
+.title{
+    padding: 11px 14px;
+    font-size: 13px;
+    color: var(--color-main);
+    font-weight: 600;
+    border-bottom: 1px solid #dce1e6;
+}
+
+.content{
+    overflow-y: scroll;
+}
+
+.content::-webkit-scrollbar {
+    width: 0;
+}
+
+.notification{
+    padding: 10px 14px;
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+}
+
+.avatar{
+    border-radius: 50%;
+}
+
+.column{
+    display: flex;
+    flex-direction: column;
+}
+
+.titleColumn{
+    font-size: 13px;
+    color: var(--color-main);
+    font-weight: 600;
+}
+
+.subtitle{
+    margin-top: 7px;
+    font-size: 13px;
+    font-weight: 500;
+}
+
+.subtitle b{
+    color: var(--color-accent);
+}
+
+.btnRow{
+    padding-top: 15px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.btnAccept{
+    background: rgba(235, 242, 250, 0.99);
+    color: #3770b1;
+    font-weight: 500;
+    width: 147.5px;
+    border-radius: 10px;
+    font-size: 13px;
+    height: 28px;
+    transition: all .2s ease;
+}
+
+.btnAccept:hover{
+    background: rgba(223, 234, 246, 0.99);
+    transition: all .2s ease;
+}
+
+.btnRemoveInvite{
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--color-accent);
+}
+
+.btnRemoveInvite:hover{
+    text-decoration: underline;
+}
+
+.allNotification{
+    padding: 10px 0 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-top: 1px solid rgb(220, 225, 230);
+    font-size: 12.5px;
+    color: var(--color-accent);
+    transition: all .2s ease;
+}
+
+.allNotification:hover{
+    background: rgba(174, 183, 194, 0.12);
+    transition: all .2s ease;
+}

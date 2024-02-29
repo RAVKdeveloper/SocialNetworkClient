@@ -52,11 +52,14 @@ const ActionsRowPostModal: FC<Props> = ({ length, likes, visible, postId }) => {
 
     useEffect(() => {
        if(user)
-        likes.map(el => el.filterUserId === user?.id).length > 0 
+        likes.filter(el => el.filterUserId === user.id).length > 0 
         ? setIsLike(true) 
         : 
         setIsLike(false)  
     }, [ likes ])
+
+
+    console.log(isLike)
 
 
     const likeTypeClass = isLike ? `${s.btnLike} ${s.active}` : s.btnLike

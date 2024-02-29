@@ -1,0 +1,36 @@
+.root{
+    margin: 16px 0;
+    padding: 16px;
+    background: var(--back-white);
+    width: 100%;
+    border-radius: 16px;
+    border: 1px solid rgba(165, 165, 165, 0.4);
+}
+
+.inputBox{
+    position: relative;
+}
+
+.input{
+    width: 100%;
+    padding: 8px 70px 8px 12px;
+    border-radius: 8px;
+    border: 1px solid rgba(165, 165, 165, 0.4);
+}
+
+.close{
+    position: absolute;
+    right: 12px;
+    top: 7px;
+    color: var(--noactive-color);
+    width: 20px;
+    height: 20px;
+    opacity: 0.7;
+    cursor: pointer;
+    transition: all .2s ease;
+}
+
+.close:hover{
+    opacity: 1;
+    transition: all .2s ease;
+}
